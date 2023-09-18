@@ -13,13 +13,19 @@ Endpoint: /consulta/saldo/antecipacao/zenite
 
 Description: This route is used to retrieve the balance of a Zenite anticipation operation.
 
-Request method: <b>GET</b>
+Request method: `GET`
 
-Cenário: *Validar get balance kosmos com sucesso*
+## Parâmetros de entrada
+
+**Request URI**: `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/{XXXX}`
+
+- {XXXX} : Substituir pelo valor
+
+### Cenário: *Validar get balance kosmos com sucesso*
 
 Request URI:	https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/0000
 
-Response
+Response:
 ```json
 {
     "message": "consult",
