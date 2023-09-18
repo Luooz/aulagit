@@ -7,7 +7,6 @@ Endpoint: /anticipation/zenite/rav-auto
 Descrição: This route is used to cancel a ravAuto operation.
 
 Request method (Método): <b>DELETE</b>
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ## Consulta de saldo antecipação Zenite
 Endpoint: /consulta/saldo/antecipacao/zenite
@@ -16,25 +15,12 @@ Description: This route is used to retrieve the balance of a Zenite anticipation
 
 Request method: <b>GET</b>
 
-### Parâmetros:
-
 Cenário: *Validar get balance kosmos com sucesso*
+Request 
 
-REQUEST
-<pre>{
-    "scenarioName": "Nome do cenário",
-    "priority": 1,
-    "request": {
-        "method": "GET",
-        "urlPathPattern": "/anticipation/zenite/balance/{companyNumber}",
-        "headers": {
-            "Authorization": {
-                "matches": "(Bearer e.*)"
-            }
-        }</pre>
-
-RESPONSE
-<pre>{
+Response
+```json
+{
     "message": "consult",
     "code": "0000",
     "object": {
@@ -52,7 +38,8 @@ RESPONSE
         ],
         "totalNegotiatedGravame": 0.0
     }
-}</pre>
+}
+```
 
 ## Consulta de última operação Zenite
 Endpoint: /consulta/ultima-operacao/zenite
