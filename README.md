@@ -39,7 +39,11 @@ Request URI: `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balanc
 
 | Cenários | Request URI | Response |
 |---|---|---|
-| Validar get balance kosmos com sucesso | https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/0000 | {
+| Validar get balance kosmos com sucesso | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/0000` | Consulta bem-sucedida. |
+| | |<details>
+| | | <summary>Resposta</summary>
+```json
+{
     "message": "consult",
     "code": "0000",
     "object": {
@@ -58,6 +62,8 @@ Request URI: `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balanc
         "totalNegotiatedGravame": 0.0
     }
 }
+```
+</details>
 
 ## Consulta de última operação Zenite
 Endpoint: /consulta/ultima-operacao/zenite
