@@ -16,7 +16,8 @@ Description: This route is used to retrieve the balance of a Zenite anticipation
 Request method: <b>GET</b>
 
 Cenário: *Validar get balance kosmos com sucesso*
-Request 
+
+Request URI:	https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/0000
 
 Response
 ```json
