@@ -1,4 +1,4 @@
-# Documentação das Rotas API
+# Documentação das rotas do Sandbox
 
 ## Cancelamento de ravAuto
 Endpoint: /anticipation/zenite/rav-auto
