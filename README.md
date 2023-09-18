@@ -15,9 +15,9 @@ Description: This route is used to retrieve the balance of a Zenite anticipation
 
 Request method: `GET`
 
-## Parâmetros de entrada
+<b> Parâmetros de entrada </b>
 
-**Request URI**: `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/{XXXX}`
+Request URI: `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/{XXXX}`
 
 - {XXXX} : Substituir pelo valor
 
