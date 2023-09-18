@@ -39,7 +39,7 @@ Request URI: `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balanc
 
 | Cenários | Request URI | Response |
 |---|---|---|
-| Validar get balance kosmos com sucesso | <pre> https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/0000` | {"pathParameters": {"companyNumber": ["Must be greater than or equal to 1 and less than or equal to 999999999."]}} |
+| Validar get balance kosmos com sucesso | https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/0000 | <pre> {"pathParameters": {"companyNumber": ["Must be greater than or equal to 1 and less than or equal to 999999999."]}} </pre> |
 
 
 ## Consulta de última operação Zenite
