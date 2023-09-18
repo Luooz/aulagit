@@ -37,13 +37,9 @@ Request URI: `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balanc
 
 - {XXXX} : Substituir pelo valor
 
-### Cenário: *Validar get balance kosmos com sucesso*
-
-Request URI:	https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/0000
-
-Response:
-```json
-{
+| Cenários | Request URI | Response |
+|---|---|---|
+| Validar get balance kosmos com sucesso | https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/0000 | {
     "message": "consult",
     "code": "0000",
     "object": {
@@ -62,7 +58,6 @@ Response:
         "totalNegotiatedGravame": 0.0
     }
 }
-```
 
 ## Consulta de última operação Zenite
 Endpoint: /consulta/ultima-operacao/zenite
