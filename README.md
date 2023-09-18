@@ -1,85 +1,13 @@
 # Documentação das rotas do Sandbox
 
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ## Cancelamento de ravAuto
 Endpoint: /anticipation/zenite/rav-auto
 
 Descrição: This route is used to cancel a ravAuto operation.
 
 Request method (Método): <b>DELETE</b>
-
-### Parâmetros:
-
-Cenário: *Validar cancelamento de RavAuto com sucesso*
-
-REQUEST
-
-<pre>{
-    "companyNumber": 33626,
-    "codeExclusion": 1,
-    "daysToBeCancelled": 1,
-    "reasonExclusion": "Teste integração Zenite -> RavAuto"
-}</pre>
-
-RESPONSE
-
-<pre>{
-    "message": "delete",
-    "code": "0000",
-    "object": {
-        "changeOperator": "",
-        "deletionScheduledDate": "23/08/2023",
-        "anticipationProductCode": 24,
-        "changeHour": "",
-        "headquarterNumber": 33626,
-        "loyaltyFee": 0.0,
-        "pendingStatusCode": 0,
-        "anticipationProductName": "CESSAO DE CREDITO",
-        "returnDescripton": "OK",
-        "companyNumber": 33626,
-        "anticipationRavFee": 0.0,
-        "rateCategoryCode": "YB",
-        "loyaltyStartDate": "",
-        "anticipationBaseDate": "23/08/2023",
-        "loyaltyEndDate": "",
-        "reserveExit": "",
-        "documentNumber": 77574119000100,
-        "authorizationDate": "",
-        "contractDate": "21/08/2023",
-        "authorizationHour": "",
-        "rateCategory": 3.5,
-        "authorizationOperator": "",
-        "nextAnticipationDate": "23/08/2023",
-        "nameCategory": "AUTOMATICO (3,50%)",
-        "nameEstablishment": "",
-        "returnCode": 0,
-        "anticipationProductDescripton": "CS",
-        "changeDate": "",
-        "brandSelectedDescription": "TODAS",
-        "brands": null,
-        "loyaltyLockIndicator": "",
-        "descriptonPendedingRate": ""
-    }
-}</pre>
-
-Cenário: *Validar cancelamento de ravAuto com sucesso sem campo "daysToBeCancelled"*
-
-REQUEST
-
-<pre>{
-    "companyNumber": 33626,
-    "codeExclusion": 1,
-    "reasonExclusion": "Teste integração Zenite -> RavAuto"
-}</pre>
-
-RESPONSE
-
-<pre>{
-    "errors": {
-        "code": "1002",
-        "message": "daysToBeCancelled: must be a valid value or attribute is required.",
-        "status": 400
-    }
-}</pre>
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ## Consulta de saldo antecipação Zenite
 Endpoint: /consulta/saldo/antecipacao/zenite
@@ -87,6 +15,43 @@ Endpoint: /consulta/saldo/antecipacao/zenite
 Description: This route is used to retrieve the balance of a Zenite anticipation operation.
 
 Request method: <b>GET</b>
+
+### Parâmetros:
+
+Cenário: *Validar get balance kosmos com sucesso*
+REQUEST
+<pre>{
+    "scenarioName": "Retorno sucesso",
+    "priority": 1,
+    "request": {
+        "method": "GET",
+        "urlPathPattern": "/anticipation/zenite/balance/([1-9]).*",
+        "headers": {
+            "Authorization": {
+                "matches": "(Bearer e.*)"
+            }
+        }</pre>
+
+RESPONSE
+<pre>{
+    "message": "consult",
+    "code": "0000",
+    "object": {
+        "totalRevolving": 0.0,
+        "grossTotal": 15395.43,
+        "totalAmountInstallments": 15395.43,
+        "totalFree": 15395.43,
+        "totalCreditAssignment": 0.0,
+        "totalBlockedAnticipation": 0.0,
+        "brands": [
+            {
+                "code": 1,
+                "balance": 15395.43
+            }
+        ],
+        "totalNegotiatedGravame": 0.0
+    }
+}</pre>
 
 ## Consulta de última operação Zenite
 Endpoint: /consulta/ultima-operacao/zenite
