@@ -19,6 +19,7 @@ Request method: <b>GET</b>
 ### Parâmetros:
 
 Cenário: *Validar get balance kosmos com sucesso*
+
 REQUEST
 <pre>{
     "scenarioName": "Retorno sucesso",
