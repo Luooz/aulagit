@@ -61,6 +61,25 @@ RESPONSE
     }
 }</pre>
 
+Cenário: *Validar cancelamento de ravAuto com sucesso sem campo "daysToBeCancelled"*
+
+REQUEST
+
+<pre>{
+    "companyNumber": 33626,
+    "codeExclusion": 1,
+    "reasonExclusion": "Teste integração Zenite -> RavAuto"
+}</pre>
+
+RESPONSE
+
+<pre>{
+    "errors": {
+        "code": "1002",
+        "message": "daysToBeCancelled: must be a valid value or attribute is required.",
+        "status": 400
+    }
+}</pre>
 
 ## Consulta de saldo antecipação Zenite
 Endpoint: /consulta/saldo/antecipacao/zenite
