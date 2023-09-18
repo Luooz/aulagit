@@ -39,7 +39,13 @@ Request URI: `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balanc
 
 | Cenários | Request URI | Response |
 |---|---|---|
-| Validar get balance kosmos com sucesso | <pre> https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/0000` | `{"message": "consult", "code": "0000", "object": {"totalRevolving": 0.0, "grossTotal": 15395.43, "totalAmountInstallments": 15395.43, "totalFree": 15395.43, "totalCreditAssignment": 0.0, "totalBlockedAnticipation": 0.0, "brands": [{"code": 1, "balance": 15395.43}], "totalNegotiatedGravame": 0.0}}</pre> |
+| Validar get balance kosmos com sucesso | <pre> https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/0000` | <pre>{
+	"pathParameters": {
+		"companyNumber": [
+			"Must be greater than or equal to 1 and less than or equal to 999999999."
+		]
+	}
+}</pre> |
 
 
 ## Consulta de última operação Zenite
