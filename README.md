@@ -22,11 +22,11 @@ Cenário: *Validar get balance kosmos com sucesso*
 
 REQUEST
 <pre>{
-    "scenarioName": "Retorno sucesso",
+    "scenarioName": "Nome do cenário",
     "priority": 1,
     "request": {
         "method": "GET",
-        "urlPathPattern": "/anticipation/zenite/balance/([1-9]).*",
+        "urlPathPattern": "/anticipation/zenite/balance/{companyNumber}",
         "headers": {
             "Authorization": {
                 "matches": "(Bearer e.*)"
