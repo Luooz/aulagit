@@ -35,7 +35,7 @@ Request method: `GET`
 
 Request URI: `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/{XXXX}`
 
-- {XXXX} : Substituir pelo valor
+- {XXXX} : Substituir pelo valor ou nome desejado.
 
 | Cenários | Request URI | Response |
 |---|---|---|
