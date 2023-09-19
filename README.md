@@ -25,7 +25,7 @@ Descrição: This route is used to cancel a ravAuto operation.
 Request method (Método): `POST`
 
 ## Consulta de saldo antecipação Zenite
-Endpoint: /consulta/saldo/antecipacao/zenite
+Endpoint: /anticipation/zenite/balance/{companyNumber}
 
 Description: This route is used to retrieve the balance of a Zenite anticipation operation.
 
