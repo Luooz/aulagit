@@ -22,7 +22,7 @@ Endpoint: /anticipation/zenite/rav-auto
 
 Descrição: This route is used to cancel a ravAuto operation.
 
-Request method (Método): <b>DELETE</b>
+Request method (Método): `POST`
 
 ## Consulta de saldo antecipação Zenite
 Endpoint: /consulta/saldo/antecipacao/zenite
@@ -47,60 +47,60 @@ Endpoint: /consulta/ultima-operacao/zenite
 
 Description: This route is used to retrieve the details of the last Zenite operation.
 
-Request method: <b>GET</b>
+Request method: `GET`
 
 ## Consulta de status de operações Zenite
 Endpoint: /consulta/status-operacoes/zenite
 
 Description: This route is used to retrieve the status of Zenite operations.
 
-Request method: <b>GET</b>
+Request method: `GET`
 
 ## Consulta de operação Zenite
 Endpoint: /consulta/operacao/zenite
 
 Description: This route is used to retrieve the details of a Zenite operation.
 
-Request method: <b>GET</b>
+Request method: `GET`
 
 ## Consulta de contrato ravAuto
 Endpoint: /consulta/contrato/ravAuto
 
 Description: This route is used to retrieve the details of a ravAuto contract.
 
-Request method: <b>GET</b>
+Request method: `GET`
 
 ## Contratação de antecipação Zenite
 Endpoint: /contratacao/antecipacao/zenite
 
 Description: This route is used to contract a Zenite anticipation operation.
 
-Request method: <b>POST</b>
+Request method: `POST`
 
 ## Contratação de ravAuto
 Endpoint: /contratacao/ravAuto
 
 Description: This route is used to contract a ravAuto operation.
 
-Request method: <b>POST</b>
+Request method: `POST`
 
 ## Contratação de antecipação Zenite Kosmo
 Endpoint: /contratacao/antecipacao/zenite-kosmo
 
 Description: This route is used to contract a Zenite Kosmo anticipation operation.
 
-Request method: <b>POST
+Request method: `POST`
 
 ## Simulação de antecipação Zenite
 Endpoint: /simulacao/antecipacao/zenite
 
 Description: This route is used to simulate a Zenite anticipation operation.
 
-Request method: <b>POST</b>
+Request method: `POST`
 
 ## Simulação de antecipação Zenite Kosmo
 Endpoint: /simulacao/antecipacao/zenite-kosmo
 
 Description: This route is used to simulate a Zenite Kosmo anticipation operation.
 
-Request method: <b>POST</b>
+Request method: `POST`
