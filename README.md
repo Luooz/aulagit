@@ -36,7 +36,7 @@ Endpoint: /anticipation/zenite/rav-auto
 Request method (Método): `POST`
 
 ## Consulta de saldo antecipação Zenite
-`get-balance-kosmos`
+#### `get-balance-kosmos`
 
 Endpoint: /anticipation/zenite/balance/{companyNumber}
 
