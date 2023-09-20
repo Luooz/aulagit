@@ -97,7 +97,7 @@ Request method: `GET`
 | CT-NCA-125 | Validar get consult operation sem header "Autorization" | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/operations?operationDate=2022-09-30&companyNumber=3008550&operationNumber=30322` | `{ "message": "Unauthorized" }` |
 
 ## Consulta de contrato ravAuto
-Endpoint: /consulta/contrato/ravAuto
+Endpoint: /anticipation/zenite/rav-auto
 
 Request method: `GET`
 
@@ -108,28 +108,28 @@ Request method: `GET`
 | CT-NCA-273 | Validar consulta de ravAuto com query param "companyNumber" com valor inexistente | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/rav-auto?companyNumber=90016267` | `{ "errors": { "code": "1019", "message": "Company does dot exist.", "status": 422 } }` |
 
 ## Contratação de antecipação Zenite
-Endpoint: /contratacao/antecipacao/zenite
+Endpoint: /anticipation/zenite/hire/domicile
 
 Request method: `POST`
 
 
 
 ## Contratação de ravAuto
-Endpoint: /contratacao/ravAuto
+Endpoint: /anticipation/zenite/rav-auto
 
 Request method: `POST`
 
 ## Contratação de antecipação Zenite Kosmo
-Endpoint: /contratacao/antecipacao/zenite-kosmo
+Endpoint: /anticipation/zenite/hire
 
 Request method: `POST`
 
 ## Simulação de antecipação Zenite
-Endpoint: /simulacao/antecipacao/zenite
+Endpoint: /anticipation/zenite/simulate/domicile
 
 Request method: `POST`
 
 ## Simulação de antecipação Zenite Kosmo
-Endpoint: /simulacao/antecipacao/zenite-kosmo
+Endpoint: /anticipation/zenite/simulate
 
 Request method: `POST`
