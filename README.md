@@ -96,7 +96,7 @@ Request method: `GET`
 | CT-NCA-124 | Validar get consult operation com header "Autorization" com token inválido | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/operations?operationDate=2022-09-30&companyNumber=3008550&operationNumber=30322` | `{ "message": "Unauthorized" }` |
 | CT-NCA-125 | Validar get consult operation sem header "Autorization" | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/operations?operationDate=2022-09-30&companyNumber=3008550&operationNumber=30322` | `{ "message": "Unauthorized" }` |
 
-## Consulta de contrato ravAuto
+## Consulta de contrato ravAuto `get-consult-contract-ravAuto`
 Endpoint: /anticipation/zenite/rav-auto
 
 Request method: `GET`
