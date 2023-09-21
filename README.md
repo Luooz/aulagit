@@ -1,17 +1,21 @@
-**MENU**
+# Documentação das Rotas do Sandbox
 
-_Rotas_
-* [Cancelamento de ravAuto](#cancelamento-de-ravAuto)
-* [Consulta de saldo antecipação Zenite](#consulta-de-saldo-antecipação-Zenite)
-* [Consulta de última operação Zenite](#consulta-de-última-operação-Zenite)
-* [Consulta de status de operações Zenite](#consulta-de-status-de-operações-Zenite)
-* [Consulta de operação Zenite](#consulta-de-operação-Zenite)
-* [Consulta de contrato ravAuto](#consulta-de-contrato-ravAuto)
-* [Contratacao de antecipação Zenite](#contratação-de-antecipação-Zenite)
-* [Contratação de ravAuto](#contratação-de-ravAuto)
-* [Contratação a antecipação Zenite Kosmo](#contratação-de-antecipação-zenite-kosmo)
-* [Simulação de antecipação Zenite](#simulação-de-antecipação-Zenite)
-* [Simulação de antecipação Zenite Kosmo](#simulação-de-antecipação-Zenite-Kosmo)
+Nesta documentação, você encontrará informações detalhadas sobre as várias rotas disponíveis no ambiente de Sandbox.
+
+## Índice
+
+1. [Rotas](#rotas)
+2. [Cancelamento de ravAuto](#cancelamento-de-ravauto)
+3. [Consulta de Saldo Antecipação Zenite](#consulta-de-saldo-antecipação-zenite)
+4. [Consulta de Última Operação Zenite](#consulta-de-última-operação-zenite)
+5. [Consulta de Status de Operações Zenite](#consulta-de-status-de-operações-zenite)
+6. [Consulta de Operação Zenite](#consulta-de-operação-zenite)
+7. [Consulta de Contrato ravAuto](#consulta-de-contrato-ravauto)
+8. [Contratação de Antecipação Zenite](#contratação-de-antecipação-zenite)
+9. [Contratação de ravAuto](#contratação-de-ravauto)
+10. [Contratação de Antecipação Zenite Kosmo](#contratação-de-antecipação-zenite-kosmo)
+11. [Simulação de Antecipação Zenite](#simulação-de-antecipação-zenite)
+12. [Simulação de Antecipação Zenite Kosmo](#simulação-de-antecipação-zenite-kosmo)
 
 | Rotas | Nome das pastas de rotas | Método |
 |---|---|---|
@@ -27,20 +31,19 @@ _Rotas_
 | Simulação de antecipação Zenite | post-simulate-domicilio | `POST` |
 | Simulação de antecipação Zenite Kosmo | post-simulate-kosmos | `POST` |
 
-# Documentação das rotas do Sandbox
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+## Rotas
 
-## Cancelamento de ravAuto
-Endpoint: /anticipation/zenite/rav-auto
+### Cancelamento de ravAuto
 
-Request method (Método): `POST`
+- **Endpoint:** /anticipation/zenite/rav-auto
+- **Método:** `POST`
 
-## Consulta de saldo antecipação Zenite
-#### `get-balance-kosmos`
+---
 
-Endpoint: /anticipation/zenite/balance/{companyNumber}
-
-Request method: `GET`
+### Consulta de Saldo Antecipação Zenite
+`get-balance-kosmos`
+- **Endpoint:** /anticipation/zenite/balance/{companyNumber}
+- **Método:** `GET`
 
 <b> Parâmetros de entrada </b>
 
@@ -59,13 +62,14 @@ Request URI: `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balanc
 | CT-NCA-115 | Validar get balance kosmos com parametro de rota "companyNumber" com valor alfabetico | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/alfabetico` | `{"pathParameters": {"companyNumber": ["Not a valid integer."]}}` |
 | CT-NCA-115 | Validar get balance kosmos com parametro de rota "companyNumber" com valor inexistente | ` https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/0000 ` | `{"pathParameters": {"companyNumber": ["Must be greater than or equal to 1 and less than or equal to 999999999."]}}`
 
+---
 
 ## Consulta de última operação Zenite
 `get-consult-operations-last-operation`
 
-Endpoint: /anticipation/zenite/last-operation
+- **Endpoint:** /anticipation/zenite/last-operation
 
-Request method: `GET`
+- **Método:** `GET`
 
 | CT-NCA-XXX | Cenários | Request URI/urlPathPattern | Response |
 |---|---|---|---|
@@ -79,12 +83,14 @@ Request method: `GET`
 | CT-NCA-147 | Validar get consult operations last operation com queryString companyNumber com valor inválido | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/last-operation?operationDate=2022-09-30&companyNumber=%25%2C%3E%3C%7B&operationNumber=30322` | `{ "queryStringParameters": { "companyNumber": [ "Not a valid integer." ] } }` |
 | CT-NCA-148 | Validar get consult operations last operation com queryString operationDate com valor inválido | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/last-operation?operationDate=%23%3C%25%21%3F&companyNumber=3008550&operationNumber=30322` | `{ "errors": { "code": "1012", "message": "operationDate invalid value in the path variable", "status": 400 } }` |
 
+---
+
 ## Consulta de status de operações Zenite
 `get-consult-operations-status`
 
-Endpoint: /anticipation/zenite/operation-status
+- **Endpoint:** /anticipation/zenite/operation-status
 
-Request method: `GET`
+- **Método:** `GET`
 
 | CT-NCA-XXX | Cenários | Request URI/urlPathPattern | Response |
 |---|---|---|---|
@@ -98,12 +104,14 @@ Request method: `GET`
 | CT-NCA-138 | Validar get consult operations status com queryString companyNumber com valor inválido | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/operation-status?operationDate=2022-09-30&companyNumber=%3A%21%28%3B_&operationNumber=30322` | `{ "queryStringParameters": { "companyNumber": [ "Not a valid integer." ] } }` |
 | CT-NCA-139 | Validar get consult operations status com queryString operationDate com valor inválido | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/operation-status?operationDate=%3F%7B%3D%23.&companyNumber=3008550&operationNumber=30322` | `{ "errors": { "code": "1012", "message": "operationDate invalid value in the path variable", "status": 400 } }` |
 
+---
+
 ## Consulta de operação Zenite
 `get-consult-operations`
 
-Endpoint: /anticipation/zenite/operations
+- **Endpoint:** /anticipation/zenite/operations
 
-Request method: `GET`
+- **Método:** `GET`
 
 | CT-NCA-XXX | Cenários | Request URI/urlPathPattern | Response |
 |---|---|---|---|
@@ -117,12 +125,14 @@ Request method: `GET`
 | CT-NCA-124 | Validar get consult operation com header "Autorization" com token inválido | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/operations?operationDate=2022-09-30&companyNumber=3008550&operationNumber=30322` | `{ "message": "Unauthorized" }` |
 | CT-NCA-125 | Validar get consult operation sem header "Autorization" | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/operations?operationDate=2022-09-30&companyNumber=3008550&operationNumber=30322` | `{ "message": "Unauthorized" }` |
 
+---
+
 ## Consulta de contrato ravAuto 
 `get-consult-contract-ravAuto`
 
 Endpoint: /anticipation/zenite/rav-auto
 
-Request method: `GET`
+- **Método:** `GET`
 
 | CT-NCA-XXX | Cenários | Request URI/urlPathPattern | Response |
 |---|---|---|---|
@@ -130,29 +140,42 @@ Request method: `GET`
 | CT-NCA-272 | Validar consulta de ravAuto com query param "companyNumber" com valor alfabetico inválido | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/rav-auto?companyNumber=ABC` | `{ "queryStringParameters": { "companyNumber": [ "Not a valid integer." ] } }` | 
 | CT-NCA-273 | Validar consulta de ravAuto com query param "companyNumber" com valor inexistente | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/rav-auto?companyNumber=90016267` | `{ "errors": { "code": "1019", "message": "Company does dot exist.", "status": 422 } }` |
 
+---
+
 ## Contratação de antecipação Zenite
-Endpoint: /anticipation/zenite/hire/domicile
+`post-hire-domicilio`
+- **Endpoint:** /anticipation/zenite/hire/domicile
 
-Request method: `POST`
+- **Método:** `POST`
 
-
+---
 
 ## Contratação de ravAuto
-Endpoint: /anticipation/zenite/rav-auto
+`post-hire-ravAuto`
+- **Endpoint:** /anticipation/zenite/rav-auto
 
-Request method: `POST`
+- **Método:** `POST`
+
+---
 
 ## Contratação de antecipação Zenite Kosmo
-Endpoint: /anticipation/zenite/hire
+`post-hire-kosmos`
+- **Endpoint:** /anticipation/zenite/hire
 
-Request method: `POST`
+- **Método:** `POST`
+
+---
 
 ## Simulação de antecipação Zenite
-Endpoint: /anticipation/zenite/simulate/domicile
+`post-simulate-domicilio`
+- **Endpoint:** /anticipation/zenite/simulate/domicile
 
-Request method: `POST`
+- **Método:** `POST`
+
+---
 
 ## Simulação de antecipação Zenite Kosmo
-Endpoint: /anticipation/zenite/simulate
+`post-simulate-kosmos`
+- **Endpoint:** /anticipation/zenite/simulate
 
-Request method: `POST`
+- **Método:** `POST`
