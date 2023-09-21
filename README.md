@@ -52,7 +52,7 @@ Request URI: `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balanc
 - {XXXX} : Substituir pelo valor ou nome específico.
 
 ### Cenários de Teste
-Aqui estão alguns cenários de teste que você pode usar para testar esta rota no Insomnia:
+Aqui estão os cenários que você pode usar para testar esta rota no Insomnia:
 
 | CT-NCA-XXX | Cenários | Request URI/urlPathPattern | Response |
 |---|---|---|---|
