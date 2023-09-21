@@ -65,6 +65,18 @@ Aqui estão os cenários que você pode usar para testar esta rota no Insomnia:
 | CT-NCA-115 | Validar get balance kosmos com parametro de rota "companyNumber" com valor alfabetico | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/alfabetico` | `{"pathParameters": {"companyNumber": ["Not a valid integer."]}}` |
 | CT-NCA-115 | Validar get balance kosmos com parametro de rota "companyNumber" com valor inexistente | ` https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/0000 ` | `{"pathParameters": {"companyNumber": ["Must be greater than or equal to 1 and less than or equal to 999999999."]}}`
 
+### Testando no Insomnia
+
+1. Abra o Insomnia.
+2. Importe o arquivo JSON de configuração.
+3. Antes de iniciar os testes, vá para a pasta `RL7 > HOM > RL7 LOGIN` e clique no botão "Send" na cor roxa.
+4. Copie o resultado amarelo da chave "access_token" (sem as aspas).
+5. Vá para a pasta `RL7 CLOUDFRONT Copy > ZENITE - BALANCE`.
+6. Dentro desta pasta, vá a seção "Bearer" e cole no campo Token.
+7. Agora, coloque o Request URI/urlPathPattern do cenário que deseja testar no URL.
+8. Clique em "Send" na cor roxa para enviar a request.
+9. A resposta esperada será exibida no painel.
+
 ---
 
 ## Consulta de última operação Zenite
