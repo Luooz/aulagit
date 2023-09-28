@@ -1,8 +1,8 @@
-# Documentação das Rotas do Sandbox
+# 📘 Documentação das Rotas do Sandbox
 
-Nesta documentação, você encontrará informações detalhadas sobre as várias rotas disponíveis no ambiente de Sandbox.
+Bem-vindo à documentação das rotas do ambiente Sandbox! Aqui, você encontrará informações detalhadas sobre as várias rotas disponíveis.
 
-## Índice
+## 📚 Índice
 
 ## [Rotas](#rotas)
 
@@ -38,7 +38,9 @@ Nesta documentação, você encontrará informações detalhadas sobre as vária
 
 ---
 
-| Rotas | Nome das pastas de rotas | Método |
+### 🗂️ Tabela de Rotas
+
+| Rotas | Nomes sugeridos para Pastas | Método |
 |---|---|---|
 | Cancelamento de ravAuto | --- | --- |
 | Consulta de saldo antecipação Zenite | get-balance-kosmos | `GET` |
@@ -86,7 +88,7 @@ Aqui estão os cenários que você pode usar para testar esta rota no Insomnia:
 | CT-NCA-115 | Validar get balance kosmos com parametro de rota "companyNumber" com valor alfabetico | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/alfabetico` | `{"pathParameters": {"companyNumber": ["Not a valid integer."]}}` |
 | CT-NCA-115 | Validar get balance kosmos com parametro de rota "companyNumber" com valor inexistente | ` https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/0000 ` | `{"pathParameters": {"companyNumber": ["Must be greater than or equal to 1 and less than or equal to 999999999."]}}`
 
-### Testando no Insomnia
+#### 🚀 Testando no Insomnia
 
 1. Abra o Insomnia.
 2. Importe o arquivo JSON de configuração.
@@ -97,6 +99,17 @@ Aqui estão os cenários que você pode usar para testar esta rota no Insomnia:
 7. Agora, coloque o Request URI/urlPathPattern do cenário que deseja testar no URL.
 8. Clique em "Send" na cor roxa para enviar a request.
 9. A resposta esperada será exibida no painel.
+
+**Nota:** Continue o padrão acima para as demais rotas, ajustando o nome da pasta conforme a rota que está sendo testada.
+
+#### Exemplos para Rotas GET:
+
+- Para a rota **Consulta de última operação Zenite**, altere para `RL7 - last-operation`.
+- Para a rota **Consulta de status de operações Zenite**, altere para `RL7 - operation-status`.
+* Para a rota **Consulta de operação Zenite**, altere `RL7 - operations`.
+* Para a rota **Consulta de contrato ravAuto**, altere para `RL7 - consult-anticipation-window`.
+
+**❗ Importante:** Se a resposta não for exibida conforme esperado ou encontrar algum problema, repita o 3º passo para garantir que o "access_token" está atualizado e tente novamente.
 
 ---
 
@@ -119,6 +132,9 @@ Aqui estão os cenários que você pode usar para testar esta rota no Insomnia:
 | CT-NCA-147 | Validar get consult operations last operation com queryString companyNumber com valor inválido | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/last-operation?operationDate=2022-09-30&companyNumber=%25%2C%3E%3C%7B&operationNumber=30322` | `{ "queryStringParameters": { "companyNumber": [ "Not a valid integer." ] } }` |
 | CT-NCA-148 | Validar get consult operations last operation com queryString operationDate com valor inválido | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/last-operation?operationDate=%23%3C%25%21%3F&companyNumber=3008550&operationNumber=30322` | `{ "errors": { "code": "1012", "message": "operationDate invalid value in the path variable", "status": 400 } }` |
 
+#### Como Testar
+Para testar esta rota, siga os passos em [🚀 Testando no Insomnia](#-testando-no-insomnia).
+
 ---
 
 ## Consulta de status de operações Zenite
@@ -139,6 +155,9 @@ Aqui estão os cenários que você pode usar para testar esta rota no Insomnia:
 | CT-NCA-137 | Validar get consult operations status com queryString operationNumber com valor inválido | `https://rl7-hom- api.useredecloud.com.br/anticipation/zenite/operation-status?operationDate=2022-09-30&companyNumber=3008550&operationNumber=%2C%5B%7B%3C_` | `{ "queryStringParameters": { "operationNumber": [ "Not a valid integer." ] } }` |
 | CT-NCA-138 | Validar get consult operations status com queryString companyNumber com valor inválido | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/operation-status?operationDate=2022-09-30&companyNumber=%3A%21%28%3B_&operationNumber=30322` | `{ "queryStringParameters": { "companyNumber": [ "Not a valid integer." ] } }` |
 | CT-NCA-139 | Validar get consult operations status com queryString operationDate com valor inválido | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/operation-status?operationDate=%3F%7B%3D%23.&companyNumber=3008550&operationNumber=30322` | `{ "errors": { "code": "1012", "message": "operationDate invalid value in the path variable", "status": 400 } }` |
+
+#### Como Testar
+Para testar esta rota, siga os passos em [🚀 Testando no Insomnia](#-testando-no-insomnia).
 
 ---
 
@@ -161,6 +180,9 @@ Aqui estão os cenários que você pode usar para testar esta rota no Insomnia:
 | CT-NCA-124 | Validar get consult operation com header "Autorization" com token inválido | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/operations?operationDate=2022-09-30&companyNumber=3008550&operationNumber=30322` | `{ "message": "Unauthorized" }` |
 | CT-NCA-125 | Validar get consult operation sem header "Autorization" | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/operations?operationDate=2022-09-30&companyNumber=3008550&operationNumber=30322` | `{ "message": "Unauthorized" }` |
 
+#### Como Testar
+Para testar esta rota, siga os passos em [🚀 Testando no Insomnia](#-testando-no-insomnia).
+
 ---
 
 ## Consulta de contrato ravAuto 
@@ -176,6 +198,9 @@ Endpoint: /anticipation/zenite/rav-auto
 | CT-NCA-272 | Validar consulta de ravAuto com query param "companyNumber" com valor alfabetico inválido | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/rav-auto?companyNumber=ABC` | `{ "queryStringParameters": { "companyNumber": [ "Not a valid integer." ] } }` | 
 | CT-NCA-273 | Validar consulta de ravAuto com query param "companyNumber" com valor inexistente | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/rav-auto?companyNumber=90016267` | `{ "errors": { "code": "1019", "message": "Company does dot exist.", "status": 422 } }` |
 
+#### Como Testar
+Para testar esta rota, siga os passos em [🚀 Testando no Insomnia](#-testando-no-insomnia).
+
 ---
 
 ## Contratação de antecipação Zenite
@@ -184,7 +209,8 @@ Endpoint: /anticipation/zenite/rav-auto
 
 - **Método:** `POST`
 
-
+#### Como Testar
+Para testar esta rota, siga os passos em [🚀 Testando no Insomnia](#-testando-no-insomnia).
 
 ---
 
@@ -194,6 +220,9 @@ Endpoint: /anticipation/zenite/rav-auto
 
 - **Método:** `POST`
 
+#### Como Testar
+Para testar esta rota, siga os passos em [🚀 Testando no Insomnia](#-testando-no-insomnia).
+
 ---
 
 ## Contratação de antecipação Zenite Kosmo
@@ -201,6 +230,9 @@ Endpoint: /anticipation/zenite/rav-auto
 - **Endpoint:** /anticipation/zenite/hire
 
 - **Método:** `POST`
+
+#### Como Testar
+Para testar esta rota, siga os passos em [🚀 Testando no Insomnia](#-testando-no-insomnia).
 
 ---
 
@@ -210,6 +242,9 @@ Endpoint: /anticipation/zenite/rav-auto
 
 - **Método:** `POST`
 
+#### Como Testar
+Para testar esta rota, siga os passos em [🚀 Testando no Insomnia](#-testando-no-insomnia).
+
 ---
 
 ## Simulação de antecipação Zenite Kosmo
@@ -217,3 +252,6 @@ Endpoint: /anticipation/zenite/rav-auto
 - **Endpoint:** /anticipation/zenite/simulate
 
 - **Método:** `POST`
+
+#### Como Testar
+Para testar esta rota, siga os passos em [🚀 Testando no Insomnia](#-testando-no-insomnia).
