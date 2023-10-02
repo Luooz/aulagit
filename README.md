@@ -2222,8 +2222,7 @@ CT-NCA-270 Validar depara das mensagens de erro internas da api ravAuto na rota 
 | CT-NCA-269 | Validar contratacao de ravAuto com campo "stockBaseDate" com valor fora do padrão | `{ "companyNumber": "90078837", "productCode": "A", "firstInstallments": 1, "lastInstallments": 99, "codeFrequency": "D", "startExpiryDate": "22.08.2023", "endExpiryDate": "01.01.2099", "anticipationMinValue": 500, "anticipateStockIndicator": "N", "operatorCode": "738233", "stockBaseDate": "07.31.2023" }` | `{ "errors": { "code": "1002", "message": "stockBaseDate: must be a valid date.", "status": 400 } }` |
 | CT-NCA-270 | Validar depara das mensagens de erro internas da API ravAuto na rota de contratacao de ravAuto | `{ "companyNumber": 412500213, "productCode": "A", "firstInstallments": 1, "lastInstallments": 99, "codeFrequency": "D", "startExpiryDate": "22.08.2023", "endExpiryDate": "01.01.2099", "anticipationMinValue": 500, "anticipateStockIndicator": "N", "operatorCode": "738233", "stockBaseDate": "01.01.2000" }` | `{ "errors": { "code": "1019", "message": "non-eligible customer, contact the help desk", "status": 422 } }` |
 
-| CT-NCA-XXX | Cenários | Request | Response |
-| --- | --- | --- | --- |
+
 CT-NCA-186 Validar post hire Kosmo com header "Authorization" com valor inválido {
     "companyNumber": "90078837",
     "workingDaysToPayment": 1,
