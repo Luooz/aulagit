@@ -2221,3 +2221,492 @@ CT-NCA-270 Validar depara das mensagens de erro internas da api ravAuto na rota 
 | CT-NCA-268 | Validar contratacao de ravAuto com campo "stockBaseDate" com valor numérico inválido | `{ "companyNumber": "90078837", "productCode": "A", "firstInstallments": 1, "lastInstallments": 99, "codeFrequency": "D", "startExpiryDate": "22.08.2023", "endExpiryDate": "01.01.2099", "anticipationMinValue": 500, "anticipateStockIndicator": "N", "operatorCode": "738233", "stockBaseDate": 1 }` | `{ "stockBaseDate": [ "Not a valid string." ] }` |
 | CT-NCA-269 | Validar contratacao de ravAuto com campo "stockBaseDate" com valor fora do padrão | `{ "companyNumber": "90078837", "productCode": "A", "firstInstallments": 1, "lastInstallments": 99, "codeFrequency": "D", "startExpiryDate": "22.08.2023", "endExpiryDate": "01.01.2099", "anticipationMinValue": 500, "anticipateStockIndicator": "N", "operatorCode": "738233", "stockBaseDate": "07.31.2023" }` | `{ "errors": { "code": "1002", "message": "stockBaseDate: must be a valid date.", "status": 400 } }` |
 | CT-NCA-270 | Validar depara das mensagens de erro internas da API ravAuto na rota de contratacao de ravAuto | `{ "companyNumber": 412500213, "productCode": "A", "firstInstallments": 1, "lastInstallments": 99, "codeFrequency": "D", "startExpiryDate": "22.08.2023", "endExpiryDate": "01.01.2099", "anticipationMinValue": 500, "anticipateStockIndicator": "N", "operatorCode": "738233", "stockBaseDate": "01.01.2000" }` | `{ "errors": { "code": "1019", "message": "non-eligible customer, contact the help desk", "status": 422 } }` |
+
+| CT-NCA-XXX | Cenários | Request | Response |
+| --- | --- | --- | --- |
+CT-NCA-186 Validar post hire Kosmo com header "Authorization" com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "message": "Unauthorized"
+}
+
+CT-NCA-187 Validar post hire Kosmo com header "Authorization" com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "message": "Unauthorized"
+}
+
+CT-NCA-188 Validar post hire Kosmo com header "Authorization" com token inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "message": "Unauthorized"
+}
+
+CT-NCA-189 Validar post hire Kosmo sem header "Authorization" {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "message": "Unauthorized"
+}
+
+CT-NCA-190 Validar post hire Kosmo com valor acima do estipulado para o canal {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 999999,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1016",
+        "message": "This partner is inactive.",
+        "status": 422
+    }
+} 
+
+CT-NCA-191 Validar post hire Kosmo com campo companyNumber com valor inválido zenite {
+    "companyNumber": "ABC",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "companyNumber": [
+        "Not a valid integer."
+    ]
+}
+
+CT-NCA-192 Validar post hire Kosmo com campo companyNumber com valor numerico negativo {
+    "companyNumber": "-12",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "companyNumber": [
+        "Must be greater than or equal to 1 and less than or equal to 999999999."
+    ]
+}
+
+CT-NCA-193 Validar post hire Kosmo com campo companyNumber com valor vazio {
+    "companyNumber": "",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "companyNumber": [
+        "Not a valid integer."
+    ]
+}
+
+CT-NCA-194 Validar post hire Kosmo com campo companyNumber com valor em branco {
+    "companyNumber": "    ",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "companyNumber": [
+        "Not a valid integer."
+    ]
+}
+
+CT-NCA-195 Validar post hire Kosmo sem campo companyNumber {
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "companyNumber": [
+        "Missing data for required field."
+    ]
+}
+
+CT-NCA-196 Validar post hire Kosmo com campo workingDaysToPayment com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": ">.,);",
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "workingDaysToPayment": [
+        "Not a valid integer."
+    ]
+}
+
+CT-NCA-197 Validar post hire Kosmo com campo workingDaysToPayment com valor numerico negativo {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": "-12",
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "workingDaysToPayment: must be no less than 0.",
+        "status": 400
+    }
+}
+
+CT-NCA-198 Validar post hire Kosmo com campo workingDaysToPayment com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": "",
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "workingDaysToPayment": [
+        "Not a valid integer."
+    ]
+}
+
+CT-NCA-199 Validar post hire Kosmo com campo workingDaysToPayment com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": "   ",
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "workingDaysToPayment": [
+        "Not a valid integer."
+    ]
+}
+
+CT-NCA-201 Validar post hire Kosmo com campo anticipationAmount com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": "!.*!+",
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "anticipationAmount": [
+        "Not a valid number."
+    ]
+}
+
+CT-NCA-202 Validar post hire Kosmo com campo anticipationAmount com valor zerado e campo product com valor "V" {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": "0",
+    "channel": 6,
+    "product": "V",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "product: must be a valid value.",
+        "status": 400
+    }
+}
+
+CT-NCA-204 Validar post hire Kosmo com campo anticipationAmount com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": "",
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "anticipationAmount": [
+        "Not a valid number."
+    ]
+}
+
+CT-NCA-205 Validar post hire Kosmo com campo anticipationAmount com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": "   ",
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "anticipationAmount": [
+        "Not a valid number."
+    ]
+}
+
+CT-NCA-207 Validar post hire Kosmo com campo product com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": ">,^*!",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "product: must be a valid value.",
+        "status": 400
+    }
+}
+
+CT-NCA-208 Validar post hire Kosmo com campo product com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "product: attribute is required.",
+        "status": 400
+    }
+}
+
+CT-NCA-209 Validar post hire Kosmo com campo product com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "   ",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "product: must be a valid value.",
+        "status": 400
+    }
+}
+
+CT-NCA-210 Validar post hire Kosmo sem campo product {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "product: attribute is required.",
+        "status": 400
+    }
+}
+
+CT-NCA-211 Validar post hire Kosmo com campo anticipationGravame com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": ";%^:}",
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "anticipationGravame": [
+        "Not a valid boolean."
+    ]
+} 
+
+CT-NCA-212 Validar post hire Kosmo com campo anticipationGravame com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "",
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "anticipationGravame": [
+        "Not a valid boolean."
+    ]
+}
+
+CT-NCA-213 Validar post hire Kosmo com campo anticipationGravame com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "   ",
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "anticipationGravame": [
+        "Not a valid boolean."
+    ]
+}
+
+CT-NCA-214 Validar post hire Kosmo sem campo anticipationGravame {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1016",
+        "message": "This partner is inactive.",
+        "status": 422
+    }
+}
+
+CT-NCA-215 Validar post hire Kosmo com campo operationUser com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "1234567890",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "operationUser: the length must be no more than 8.",
+        "status": 400
+    }
+}
+
+CT-NCA-217 Validar post hire Kosmo com campo operationUser com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "   ",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "operationUser": [
+        "Not a valid integer."
+    ]
+}
+
+CT-NCA-218 Validar post hire Kosmo com campo channel com valor invalido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": "ABC",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "channel": [
+        "Not a valid integer."
+    ]
+}
+
+CT-NCA-220 Validar post hire Kosmo com campo channel em branco com falha {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": "NULL",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 1940
+} {
+    "channel": [
+        "Not a valid integer."
+    ]
+}
