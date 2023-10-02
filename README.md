@@ -255,3 +255,942 @@ Para testar esta rota, siga os passos em [🚀 Testando no Insomnia](#-testando-
 
 #### Como Testar
 Para testar esta rota, siga os passos em [🚀 Testando no Insomnia](#-testando-no-insomnia).
+
+____
+
+Contratacao de antecipação Zenite
+
+CT-NCA-056 Validar post hire domicílio com sucesso {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "message": "create",
+    "code": "0000",
+    "object": {
+        "creditAgency": 0,
+        "dateTimeProcessing": "",
+        "minimumValueAnticipateChannel": 0.0,
+        "endPeriodAnticipation": "",
+        "freeGrossValue": 0.0,
+        "gravameGrossValue": 0.0,
+        "startPeriodAnticipation": "",
+        "codeDomicilePayment": 0.0,
+        "domicile": null,
+        "totalAmountAvailableAnticipate": 0.0,
+        "creditBank": 0,
+        "nameProductAnticipation": "",
+        "gravameNetValue": 0.0,
+        "operationNumber": 0,
+        "anticipationDataGravame": null,
+        "discountRate": 0.0,
+        "codeProductAnticipation": 0,
+        "freeNetValue": 0.0
+    }
+}
+
+CT-NCA-063 Validar post hire domicílio com header "Authorization" com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "message": "Unauthorized"
+}
+
+CT-NCA-064 Validar post hire domicílio com header "Authorization" com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "message": "Unauthorized"
+}
+
+CT-NCA-065 Validar post hire domicílio com header "Authorization" com token inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "message": "Unauthorized"
+}
+
+CT-NCA-066 Validar post hire domicílio sem header "Authorization" {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "message": "Unauthorized"
+}
+
+CT-NCA-072 Validar post hire domicílio com campo companyNumber com valor inválido zenite {
+    "companyNumber": "ABC",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "companyNumber": [
+        "Not a valid integer."
+    ]
+}
+
+CT-NCA-073 Validar post hire domicílio com campo companyNumber com valor numerico negativo {
+    "companyNumber": "-12",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "companyNumber": [
+        "Must be greater than or equal to 1 and less than or equal to 999999999."
+    ]
+}
+
+CT-NCA-074 Validar post hire domicílio com campo companyNumber com valor vazio {
+    "companyNumber": "",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "companyNumber": [
+        "Not a valid integer."
+    ]
+} 
+
+CT-NCA-075 Validar post hire domicílio com campo companyNumber com valor em branco {
+    "companyNumber": "    ",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "companyNumber": [
+        "Not a valid integer."
+    ]
+}
+
+CT-NCA-076 Validar post hire domicílio sem campo companyNumber {
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "companyNumber": [
+        "Missing data for required field."
+    ]
+} 
+
+CT-NCA-077 Validar post hire domicílio com campo workingDaysToPayment com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": "%#[,%",
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "workingDaysToPayment": [
+        "Not a valid integer."
+    ]
+}
+
+CT-NCA-078 Validar post hire domicílio com campo workingDaysToPayment com valor numerico negativo {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": "-12",
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "workingDaysToPayment: must be no less than 0.",
+        "status": 400
+    }
+}
+
+CT-NCA-079 Validar post hire domicílio com campo workingDaysToPayment com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": "",
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "workingDaysToPayment": [
+        "Not a valid integer."
+    ]
+}
+
+CT-NCA-080 Validar post hire domicílio com campo workingDaysToPayment com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": "   ",
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "workingDaysToPayment": [
+        "Not a valid integer."
+    ]
+}
+
+CT-NCA-082 Validar post hire domicílio com campo anticipationType com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "#+,=#",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "anticipationType: must be a valid value.",
+        "status": 400
+    }
+} 
+
+CT-NCA-083 Validar post hire domicílio com campo anticipationType com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "anticipationType: attribute is required.",
+        "status": 400
+    }
+}
+
+CT-NCA-084 Validar post hire domicílio com campo anticipationType com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "   ",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "anticipationType: must be a valid value.",
+        "status": 400
+    }
+} 
+
+CT-NCA-085 Validar post hire domicílio sem campo anticipationType {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "anticipationType: attribute is required.",
+        "status": 400
+    }
+}
+
+CT-NCA-086 Validar post hire domicílio com campo anticipationAmount com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": "^:_.}",
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "anticipationAmount": [
+        "Not a valid number."
+    ]
+} 
+
+CT-NCA-087 Validar post hire domicílio com campo anticipationAmount com valor zerado e campo anticipationType com valor "P" {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": "0",
+    "anticipationType": "P",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1008",
+        "message": "Requested amount out of range: 1.00, 1000000000.00",
+        "status": 422
+    }
+}
+
+CT-NCA-088 Validar post hire domicílio com campo anticipationAmount com valor zerado e campo anticipationType com valor "T" {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": "0",
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "message": "create",
+    "code": "0000",
+    "object": {
+        "creditAgency": 0,
+        "dateTimeProcessing": "",
+        "minimumValueAnticipateChannel": 0.0,
+        "endPeriodAnticipation": "",
+        "freeGrossValue": 0.0,
+        "gravameGrossValue": 0.0,
+        "startPeriodAnticipation": "",
+        "codeDomicilePayment": 0.0,
+        "domicile": null,
+        "totalAmountAvailableAnticipate": 0.0,
+        "creditBank": 0,
+        "nameProductAnticipation": "",
+        "gravameNetValue": 0.0,
+        "operationNumber": 0,
+        "anticipationDataGravame": null,
+        "discountRate": 0.0,
+        "codeProductAnticipation": 0,
+        "freeNetValue": 0.0
+    }
+}
+
+CT-NCA-089 Validar post hire domicílio com campo anticipationAmount com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": "",
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "anticipationAmount": [
+        "Not a valid number."
+    ]
+}
+
+CT-NCA-090 Validar post hire domicílio com campo anticipationAmount com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": "   ",
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "anticipationAmount": [
+        "Not a valid number."
+    ]
+}
+
+CT-NCA-091 Validar post hire domicílio sem campo anticipationAmount {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "message": "create",
+    "code": "0000",
+    "object": {
+        "creditAgency": 0,
+        "dateTimeProcessing": "",
+        "minimumValueAnticipateChannel": 0.0,
+        "endPeriodAnticipation": "",
+        "freeGrossValue": 0.0,
+        "gravameGrossValue": 0.0,
+        "startPeriodAnticipation": "",
+        "codeDomicilePayment": 0.0,
+        "domicile": null,
+        "totalAmountAvailableAnticipate": 0.0,
+        "creditBank": 0,
+        "nameProductAnticipation": "",
+        "gravameNetValue": 0.0,
+        "operationNumber": 0,
+        "anticipationDataGravame": null,
+        "discountRate": 0.0,
+        "codeProductAnticipation": 0,
+        "freeNetValue": 0.0
+    }
+}
+
+CT-NCA-092 Validar post hire domicílio com campo selectionType com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": ",}]-+",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "selectionType: must be a valid value.",
+        "status": 400
+    }
+}
+
+CT-NCA-093 Validar post hire domicílio com campo selectionType com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "message": "create",
+    "code": "0000",
+    "object": {
+        "creditAgency": 0,
+        "dateTimeProcessing": "",
+        "minimumValueAnticipateChannel": 0.0,
+        "endPeriodAnticipation": "",
+        "freeGrossValue": 0.0,
+        "gravameGrossValue": 0.0,
+        "startPeriodAnticipation": "",
+        "codeDomicilePayment": 0.0,
+        "domicile": null,
+        "totalAmountAvailableAnticipate": 0.0,
+        "creditBank": 0,
+        "nameProductAnticipation": "",
+        "gravameNetValue": 0.0,
+        "operationNumber": 0,
+        "anticipationDataGravame": null,
+        "discountRate": 0.0,
+        "codeProductAnticipation": 0,
+        "freeNetValue": 0.0
+    }
+}
+
+CT-NCA-094 Validar post hire domicílio com campo selectionType com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "   ",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "selectionType: must be a valid value.",
+        "status": 400
+    }
+}
+
+CT-NCA-097 Validar post hire domicílio com campo product com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "(!)]|",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "product: must be a valid value.",
+        "status": 400
+    }
+}
+
+CT-NCA-098 Validar post hire domicílio com campo product com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "product: attribute is required.",
+        "status": 400
+    }
+} 
+
+CT-NCA-099 Validar post hire domicílio com campo product com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "   ",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "product: must be a valid value.",
+        "status": 400
+    }
+} 
+
+CT-NCA-100 Validar post hire domicílio sem campo product {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "product: attribute is required.",
+        "status": 400
+    }
+}
+
+CT-NCA-101 Validar post hire domicílio com campo anticipationGravame com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "((+{+",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "anticipationGravame: must be a valid value.",
+        "status": 400
+    }
+} 
+
+CT-NCA-102 Validar post hire domicílio com campo anticipationGravame com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "anticipationGravame: attribute is required.",
+        "status": 400
+    }
+} 
+
+CT-NCA-103 Validar post hire domicílio com campo anticipationGravame com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "   ",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "anticipationGravame: must be a valid value.",
+        "status": 400
+    }
+}
+
+CT-NCA-104 Validar post hire domicílio sem campo anticipationGravame {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "anticipationGravame: attribute is required.",
+        "status": 400
+    }
+}
+
+CT-NCA-105 Validar post hire domicílio com campo desiredDiscountPercentage com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "739347",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2,
+    "desiredDiscountPercentage": -15
+} {
+    "message": "create",
+    "code": "0000",
+    "object": {
+        "creditAgency": 0,
+        "dateTimeProcessing": "",
+        "minimumValueAnticipateChannel": 0.0,
+        "endPeriodAnticipation": "",
+        "freeGrossValue": 0.0,
+        "gravameGrossValue": 0.0,
+        "startPeriodAnticipation": "",
+        "codeDomicilePayment": 0.0,
+        "domicile": null,
+        "totalAmountAvailableAnticipate": 0.0,
+        "creditBank": 0,
+        "nameProductAnticipation": "",
+        "gravameNetValue": 0.0,
+        "operationNumber": 0,
+        "anticipationDataGravame": null,
+        "discountRate": 0.0,
+        "codeProductAnticipation": 0,
+        "freeNetValue": 0.0
+    }
+}
+
+CT-NCA-106 Validar post hire domicílio com campo operationUser com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "1234567890",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "operationUser: the length must be no more than 9.",
+        "status": 400
+    }
+}
+
+CT-NCA-107 Validar post hire domicílio com campo operationUser com valor fora do padrao {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "123",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "message": "create",
+    "code": "0000",
+    "object": {
+        "creditAgency": 0,
+        "dateTimeProcessing": "",
+        "minimumValueAnticipateChannel": 0.0,
+        "endPeriodAnticipation": "",
+        "freeGrossValue": 0.0,
+        "gravameGrossValue": 0.0,
+        "startPeriodAnticipation": "",
+        "codeDomicilePayment": 0.0,
+        "domicile": null,
+        "totalAmountAvailableAnticipate": 0.0,
+        "creditBank": 0,
+        "nameProductAnticipation": "",
+        "gravameNetValue": 0.0,
+        "operationNumber": 0,
+        "anticipationDataGravame": null,
+        "discountRate": 0.0,
+        "codeProductAnticipation": 0,
+        "freeNetValue": 0.0
+    }
+}
+
+CT-NCA-108 Validar post hire domicílio com campo operationUser com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "channel": 15,
+    "anticipationAmount": 0,
+    "anticipationType": "T",
+    "selectionType": "V",
+    "product": "A",
+    "codeProduct": 201,
+    "anticipationGravame": "N",
+    "startSelectionDate": "2022-08-23",
+    "operationUser": "   ",
+    "endSelectionDate": "2023-12-31",
+    "partnerNumber": 2
+} {
+    "message": "create",
+    "code": "0000",
+    "object": {
+        "creditAgency": 0,
+        "dateTimeProcessing": "",
+        "minimumValueAnticipateChannel": 0.0,
+        "endPeriodAnticipation": "",
+        "freeGrossValue": 0.0,
+        "gravameGrossValue": 0.0,
+        "startPeriodAnticipation": "",
+        "codeDomicilePayment": 0.0,
+        "domicile": null,
+        "totalAmountAvailableAnticipate": 0.0,
+        "creditBank": 0,
+        "nameProductAnticipation": "",
+        "gravameNetValue": 0.0,
+        "operationNumber": 0,
+        "anticipationDataGravame": null,
+        "discountRate": 0.0,
+        "codeProductAnticipation": 0,
+        "freeNetValue": 0.0
+    }
+}
