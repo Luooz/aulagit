@@ -2748,3 +2748,917 @@ Aqui estão os cenários de teste para a contratação de Kosmo, com suas entrad
 | CT-NCA-217   | Validar post hire Kosmo com campo operationUser com valor em branco | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": " ", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "operationUser": [ "Not a valid integer." ] }` |
 | CT-NCA-218   | Validar post hire Kosmo com campo channel com valor inválido | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": "ABC", "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "channel": [ "Not a valid integer." ] }` |
 | CT-NCA-220   | Validar post hire Kosmo com campo channel em branco com falha | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": "NULL", "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 1940 }` | `{ "channel": [ "Not a valid integer." ] }` |
+
+Simulação de Antecipação Zenite
+
+CT-NCA-013 Validar post simulate domicílio com valor acima do estipulado para o canal {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 999999999,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "errors": {
+        "code": "1016",
+        "message": "This partner is inactive.",
+        "status": 422
+    }
+} 
+
+CT-NCA-019 Validar post simulate domicílio com campo companyNumber com valor inválido zenite {
+    "companyNumber": "ABC",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "companyNumber": [
+        "Not a valid integer."
+    ]
+} CT-NCA-020 Validar post simulate domicílio com campo companyNumber com valor numerico negativo {
+    "companyNumber": "-12",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "companyNumber": [
+        "Must be greater than or equal to 1 and less than or equal to 999999999."
+    ]
+} CT-NCA-021 Validar post simulate domicílio com campo companyNumber com valor vazio {
+    "companyNumber": "",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "companyNumber": [
+        "Not a valid integer."
+    ]
+} CT-NCA-022 Validar post simulate domicílio com campo companyNumber com valor em branco {
+    "companyNumber": "    ",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "companyNumber": [
+        "Not a valid integer."
+    ]
+} CT-NCA-023 Validar post simulate domicílio sem campo companyNumber {
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "companyNumber": [
+        "Missing data for required field."
+    ]
+} CT-NCA-024 Validar post simulate domicílio com campo workingDaysToPayment com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": "@",
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "workingDaysToPayment": [
+        "Not a valid integer."
+    ]
+} CT-NCA-025 Validar post simulate domicílio com campo workingDaysToPayment com valor numerico negativo {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": "-12",
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "errors": {
+        "code": "1002",
+        "message": "workingDaysToPayment: must be no less than 0.",
+        "status": 400
+    }
+} CT-NCA-026 Validar post simulate domicílio com campo workingDaysToPayment com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": "",
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "workingDaysToPayment": [
+        "Not a valid integer."
+    ]
+} CT-NCA-027 Validar post simulate domicílio com campo workingDaysToPayment com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": "   ",
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "workingDaysToPayment": [
+        "Not a valid integer."
+    ]
+} CT-NCA-029 Validar post simulate domicílio com campo anticipationType com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "anticipationType": "))[$]",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "errors": {
+        "code": "1002",
+        "message": "anticipationType: must be a valid value.",
+        "status": 400
+    }
+} CT-NCA-030 Validar post simulate domicílio com campo anticipationType com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "anticipationType": "",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "errors": {
+        "code": "1002",
+        "message": "anticipationType: attribute is required.",
+        "status": 400
+    }
+} CT-NCA-031 Validar post simulate domicílio com campo anticipationType com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "anticipationType": "   ",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+}{
+    "errors": {
+        "code": "1002",
+        "message": "anticipationType: must be a valid value.",
+        "status": 400
+    }
+} CT-NCA-032 Validar post simulate domicílio sem campo anticipationType {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "errors": {
+        "code": "1002",
+        "message": "anticipationType: attribute is required.",
+        "status": 400
+    }
+} CT-NCA-033 Validar post simulate domicílio com campo anticipationAmount com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": "+:}{;",
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "anticipationAmount": [
+        "Not a valid number."
+    ]
+} CT-NCA-034 Validar post simulate domicílio com campo anticipationAmount com valor zerado e campo anticipationType com valor "P" {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": "0",
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "errors": {
+        "code": "1016",
+        "message": "This partner is inactive.",
+        "status": 422
+    }
+} CT-NCA-036 Validar post simulate domicílio com campo anticipationAmount com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": "",
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "anticipationAmount": [
+        "Not a valid number."
+    ]
+} CT-NCA-037 Validar post simulate domicílio com campo anticipationAmount com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": "   ",
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "anticipationAmount": [
+        "Not a valid number."
+    ]
+} CT-NCA-038 Validar post simulate domicílio sem campo anticipationAmount {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "errors": {
+        "code": "1016",
+        "message": "This partner is inactive.",
+        "status": 422
+    }
+} CT-NCA-039 Validar post simulate domicílio com campo selectionType com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "|!:#%",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "errors": {
+        "code": "1002",
+        "message": "selectionType: must be a valid value.",
+        "status": 400
+    }
+} CT-NCA-041 Validar post simulate domicílio com campo selectionType com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "   ",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "errors": {
+        "code": "1002",
+        "message": "selectionType: must be a valid value.",
+        "status": 400
+    }
+} CT-NCA-044 Validar post simulate domicílio com campo product com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "}]+^,",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "errors": {
+        "code": "1002",
+        "message": "product: must be a valid value.",
+        "status": 400
+    }
+} CT-NCA-045 Validar post simulate domicílio com campo product com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "errors": {
+        "code": "1002",
+        "message": "product: attribute is required.",
+        "status": 400
+    }
+} CT-NCA-046 Validar post simulate domicílio com campo product com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "   ",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "errors": {
+        "code": "1002",
+        "message": "product: must be a valid value.",
+        "status": 400
+    }
+} CT-NCA-047 Validar post simulate domicílio sem campo product {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "operationUser": "739347",
+    "anticipationGravame": "N"
+} {
+    "errors": {
+        "code": "1002",
+        "message": "product: attribute is required.",
+        "status": 400
+    }
+} CT-NCA-048 Validar post simulate domicílio com campo anticipationGravame com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "#+!<!"
+} {
+    "errors": {
+        "code": "1002",
+        "message": "anticipationGravame: must be a valid value.",
+        "status": 400
+    }
+} CT-NCA-049 Validar post simulate domicílio com campo anticipationGravame com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": ""
+} {
+    "errors": {
+        "code": "1002",
+        "message": "anticipationGravame: attribute is required.",
+        "status": 400
+    }
+} CT-NCA-050 Validar post simulate domicílio com campo anticipationGravame com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "   "
+} {
+    "errors": {
+        "code": "1002",
+        "message": "anticipationGravame: must be a valid value.",
+        "status": 400
+    }
+} CT-NCA-051 Validar post simulate domicílio sem campo anticipationGravame {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "anticipationType": "P",
+    "selectionType": "V",
+    "channel": 6,
+    "startSelectionDate": "2022-08-23",
+    "endSelectionDate": "2023-12-31",
+    "product": "A",
+    "operationUser": "739347"
+} {
+    "errors": {
+        "code": "1002",
+        "message": "anticipationGravame: attribute is required.",
+        "status": 400
+    }
+} 
+
+Simulação de antecipação Zenite Kosmo
+
+CT-NCA-150 Validar post simulate Kosmo com valor acima do estipulado para o canal {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 999999999,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1016",
+        "message": "This partner is inactive.",
+        "status": 422
+    }
+} CT-NCA-151 Validar post simulate Kosmo com campo companyNumber com valor inválido zenite {
+    "companyNumber": "ABC",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "companyNumber": [
+        "Not a valid integer."
+    ]
+} CT-NCA-152 Validar post simulate Kosmo com campo companyNumber com valor numerico negativo {
+    "companyNumber": "-12",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "companyNumber": [
+        "Must be greater than or equal to 1 and less than or equal to 999999999."
+    ]
+} CT-NCA-153 Validar post simulate Kosmo com campo companyNumber com valor vazio {
+    "companyNumber": "",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "companyNumber": [
+        "Not a valid integer."
+    ]
+} CT-NCA-154 Validar post simulate Kosmo com campo companyNumber com valor em branco {
+    "companyNumber": "    ",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "companyNumber": [
+        "Not a valid integer."
+    ]
+} CT-NCA-155 Validar post simulate Kosmo sem campo companyNumber {
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "companyNumber": [
+        "Missing data for required field."
+    ]
+} CT-NCA-156 Validar post simulate Kosmo com campo workingDaysToPayment com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": "@",
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "workingDaysToPayment": [
+        "Not a valid integer."
+    ]
+} CT-NCA-157 Validar post simulate Kosmo com campo workingDaysToPayment com valor numerico negativo {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": "-12",
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "workingDaysToPayment: must be no less than 0.",
+        "status": 400
+    }
+} CT-NCA-158 Validar post simulate Kosmo com campo workingDaysToPayment com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": "",
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "workingDaysToPayment": [
+        "Not a valid integer."
+    ]
+} CT-NCA-159 Validar post simulate Kosmo com campo workingDaysToPayment com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": "   ",
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "workingDaysToPayment": [
+        "Not a valid integer."
+    ]
+} CT-NCA-160 Validar post simulate Kosmo com campo product com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "#^!);",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "product: must be a valid value.",
+        "status": 400
+    }
+} CT-NCA-161 Validar post simulate Kosmo com campo product com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "product: attribute is required.",
+        "status": 400
+    }
+} CT-NCA-162 Validar post simulate Kosmo com campo product com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "   ",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "product: must be a valid value.",
+        "status": 400
+    }
+} CT-NCA-163 Validar post simulate Kosmo sem campo product {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "product: attribute is required.",
+        "status": 400
+    }
+} CT-NCA-164 Validar post simulate Kosmo com campo anticipationAmount com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": ",^;]+",
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "anticipationAmount": [
+        "Not a valid number."
+    ]
+} CT-NCA-165 Validar post simulate Kosmo com campo anticipationAmount com valor zerado e campo product com valor invalido "G" {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": "0",
+    "channel": 6,
+    "product": "G",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "product: must be a valid value.",
+        "status": 400
+    }
+} CT-NCA-169 Validar post simulate Kosmo com campo anticipationAmount com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": "",
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "anticipationAmount": [
+        "Not a valid number."
+    ]
+} CT-NCA-170 Validar post simulate Kosmo com campo anticipationAmount com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": "   ",
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "anticipationAmount": [
+        "Not a valid number."
+    ]
+} CT-NCA-172 Validar post simulate com amount fora do range minimo de 100 {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": "50",
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1016",
+        "message": "This partner is inactive.",
+        "status": 422
+    }
+} CT-NCA-174 Validar post simulate Kosmo com campo anticipationGravame com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "!*(]<",
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "anticipationGravame": [
+        "Not a valid boolean."
+    ]
+} CT-NCA-175 Validar post simulate Kosmo com campo anticipationGravame com valor vazio {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "",
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "anticipationGravame": [
+        "Not a valid boolean."
+    ]
+} CT-NCA-176 Validar post simulate Kosmo com campo anticipationGravame com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": "   ",
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "anticipationGravame": [
+        "Not a valid boolean."
+    ]
+} CT-NCA-177 Validar post simulate Kosmo sem campo anticipationGravame {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "739347",
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1016",
+        "message": "This partner is inactive.",
+        "status": 422
+    }
+} CT-NCA-178 Validar post simulate Kosmo com campo operationUser com valor inválido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "+;|%>",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "operationUser": [
+        "Not a valid integer."
+    ]
+} CT-NCA-180 Validar post simulate Kosmo com campo operationUser com valor em branco {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "   ",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "operationUser": [
+        "Not a valid integer."
+    ]
+} CT-NCA-181 Validar post simulate Kosmo com campo operationUser com valor maior que 8 caracteres {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": 6,
+    "product": "A",
+    "operationUser": "123456789",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "errors": {
+        "code": "1002",
+        "message": "operationUser: the length must be no more than 8.",
+        "status": 400
+    }
+} CT-NCA-182 Validar post hire Kosmo com campo channel com valor invalido {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": "ABC",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "channel": [
+        "Not a valid integer."
+    ]
+} CT-NCA-184 Validar post hire Kosmo com campo channel em branco com falha {
+    "companyNumber": "90078837",
+    "workingDaysToPayment": 1,
+    "anticipationAmount": 100,
+    "channel": "NULL",
+    "product": "A",
+    "operationUser": "739347",
+    "anticipationGravame": false,
+    "codeProduct": 301,
+    "partnerNumber": 2
+} {
+    "channel": [
+        "Not a valid integer."
+    ]
+} 
