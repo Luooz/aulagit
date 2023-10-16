@@ -462,3 +462,13 @@ Para testar esta rota, siga os passos em [🚀 Testando no Insomnia](#-testando-
 
 #### Como Testar
 Para testar esta rota, siga os passos em [🚀 Testando no Insomnia](#-testando-no-insomnia).
+
+`get-balance`
+| Cenários | Request URI/urlPathPattern | Response |
+|---|---|---|
+| Validar header 'Autorization' com valor inválido ou vazio | `https://rl7-sandbox-api.useredecloud.com.br/anticipation/zenite/balance/([1-9][0-9]{9,})` | `{ "code": "0000", "message": "Unauthorized" }`
+| Parametro 'companyNumber' com valor inexistente | `https://rl7-sandbox-api.useredecloud.com.br/anticipation/zenite/balance/0.*` | `{ "pathParameters": { "companyNumber": [ "Must be greater than or equal to 1 and less than or equal to 999999999." ] } }`
+| Parametro 'companyNumber' com valor alfabetico | `https://rl7-sandbox-api.useredecloud.com.br/anticipation/zenite/balance/([A-Z]\|[a-z])*` | `{ "pathParameters": { "companyNumber": [ "Must be greater than or equal to 1 and less than or equal to 999999999." ] } } `
+| Validar get sem header 'Autorization' | `https://rl7-sandbox-api.useredecloud.com.br/anticipation/zenite/balance/([1-9]\|[1-9][0-9]{0,7})` | `{ "code": "0000", "message": "Unauthorized" }`
+| Retorno sucesso | `https://rl7-sandbox-api.useredecloud.com.br/anticipation/zenite/balance/([1-9]\|[1-9][0-9]{0,7})` | `{ "code": "0000", "message": "consult", "object": { "totalNegotiatedGravame": 0.0, "totalRevolving": 0.0, "brands": [ { "balance": 647777.04, "code": 1 } ], "totalFree": 647777.04, "totalBlockedAnticipation": 0.0, "totalCreditAssignment": 0.0, "totalAmountInstallments": 647777.04, "grossTotal": 647777.04 } }`
+
