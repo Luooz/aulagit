@@ -614,4 +614,30 @@ Validar post hire com campo workingDaysToPayment com valor em branco, inválido 
             ]
         }
 
+## `post-hire`
+
+| Cenários | Request URI/urlPathPattern | Response |
+|---|---|---|
+| Validar post hire com campo anticipationAmount com valor zerado e campo product com valor 'V' | /anticipation/zenite/hire | `{"errors": {"code": "1002", "message": "product: must be a valid value.", "status": 400}}` |
+| Validar post hire com campo anticipationAmount com valor em branco, inválido ou vazio | /anticipation/zenite/hire | `{"anticipationAmount": ["Not a valid number."]}` |
+| Validar post hire com campo anticipationGravame com valor em branco, inválido ou vazio | /anticipation/zenite/hire | `{"anticipationGravame": ["Not a valid boolean."]}` |
+| Validar post hire com campo channel em branco com falha | /anticipation/zenite/hire | `{"channel": ["Not a valid integer."]}` |
+| Validar post hire com campo channel com valor inválido | /anticipation/zenite/hire | `{"channel": ["Not a valid integer."]}` |
+| Validar post hire com campo companyNumber com valor numérico negativo | /anticipation/zenite/hire | `{"companyNumber": ["Must be greater than or equal to 1 and less than or equal to 999999999."]}` |
+| Validar post hire com campo companyNumber com valor em branco, inválido ou vazio | /anticipation/zenite/hire | `{"companyNumber": ["Not a valid integer."]}` |
+| Validar post hire com header 'Authorization' com token inválido | /anticipation/zenite/hire | `{"message": "Unauthorized"}` |
+| Validar post hire com header 'Authorization' com valor inválido ou em branco | /anticipation/zenite/hire | `{"message": "Unauthorized"}` |
+| Validar post hire com campo operationUser com valor em branco | /anticipation/zenite/hire | `{"operationUser": ["Not a valid integer."]}` |
+| Validar post hire com campo operationUser com valor inválido | /anticipation/zenite/hire | `{"errors": {"code": "1002", "message": "operationUser: the length must be no more than 8.", "status": 400}}` |
+| Validar post hire com campo product com valor em branco, inválido ou vazio | /anticipation/zenite/hire | `{"errors": {"code": "1002", "message": "product: must be a valid value.", "status": 400}}` |
+| Validar post hire sem campo anticipationGravame | /anticipation/zenite/hire | `{"errors": {"code": "1016", "message": "This partner is inactive.", "status": 422}}` |
+| Validar post hire sem campo companyNumber | /anticipation/zenite/hire | `{"companyNumber": ["Missing data for required field."]}` |
+| Validar post hire sem campo product | /anticipation/zenite/hire | `{"errors": {"code": "1002", "message": "product: attribute is required.", "status": 400}}` |
+| Validar post hire sem header 'Authorization' | /anticipation/zenite/hire | `{"message": "Unauthorized"}` |
+| Validar post hire com sucesso (validar se seria Kosmos) | /anticipation/zenite/hire | `{"object": {"periodRate": 9.223599, "netValue": 119014.56, "totalRotatingAmount": 0.0, "parcelAmount": 131107.38, "effectiveRate": 5.043661, "financialCost": 1.036515, "monthRate": 4.69, "initialDueDate": "23/10/2023", "finalDueDate": "23/10/2023", "averageTerm": 59.0, "product": "CESSAO", "domiciles": [{"companyNumber": 90078837, "creditAgency": 1500, "gravameIndicator": false, "brandNumber": 1, "codeDomicilePayment": "5544191", "creditBank": 341, "accountType": "CC", "accountNumber": "00000000000000738636"}], "operationNumber": 45756, "spread": 3.966, "brands": [1], "grossValue": 131107.38}, "code": "0000", "message": "create"}` |
+| Validar post hire com valor acima do estipulado para o canal | /anticipation/zenite/hire | `{"errors": {"code": "1016", "message": "This partner is inactive.", "status": 422}}` |
+| Validar post hire com campo workingDaysToPayment com valor numérico negativo | /anticipation/zenite/hire | `{"errors": {"code": "1002", "message": "workingDaysToPayment: must be no less than 0.", "status": 400}}` |
+| Validar post hire com campo workingDaysToPayment com valor em branco, inválido ou vazio | /anticipation/zenite/hire | `{"workingDaysToPayment": ["Not a valid integer."]}` |
+
+
 
