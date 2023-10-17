@@ -639,5 +639,134 @@ Validar post hire com campo workingDaysToPayment com valor em branco, inválido 
 | Validar post hire com campo workingDaysToPayment com valor numérico negativo | /anticipation/zenite/hire | `{"errors": {"code": "1002", "message": "workingDaysToPayment: must be no less than 0.", "status": 400}}` |
 | Validar post hire com campo workingDaysToPayment com valor em branco, inválido ou vazio | /anticipation/zenite/hire | `{"workingDaysToPayment": ["Not a valid integer."]}` |
 
+post-simulate
+| Cenários | Request URI/urlPathPattern | Response |
+|---|---|---|
+Validar post simulate com amount fora do range minimo de 100 /anticipation/zenite/simulate {
+            "code": "1016",
+            "message": "This partner is inactive.",
+            "status": 422
+        }
+ Validar post simulate com campo anticipationAmount com valor em branco, inválido ou vazio /anticipation/zenite/simulate {
+            "anticipationAmount": [
+                "Not a valid number."
+            ]
+        }
+ Validar post simulate com campo anticipationAmount com valor zerado e campo product com valor invalido 'G' /anticipation/zenite/simulate {
+            "code": "0000",
+            "message": "create",
+            "object": {
+                "code": "1002",
+                "message": "product: must be a valid value.",
+                "status": 400
+            }
+Validar post simulate com campo anticipationGravame com valor em branco, inválido ou vazio {
+            "anticipationGravame": [
+                "Not a valid boolean."
+            ]
+        }
+ Validar channel null {
+            "channel": [
+                "Not a valid integer."
+            ]
+        }
+
+Validar campo channel invalido {
+            "channel": [
+                "Not a valid integer."
+            ]
+        }
+ Validar post simulate com campo companyNumber com valor em branco, inválido ou vazio {
+            "companyNumber": [
+                "Not a valid integer."
+            ]
+        }
+ Validar post simulate com campo companyNumber com valor numerico negativo {
+            "companyNumber": [
+                "Must be greater than or equal to 1 and less than or equal to 999999999."
+            ]
+        }
+ Validar post simulate com campo operationUser com valor em branco e inválido {
+            "operationUser": [
+                "Not a valid integer."
+            ]
+        }
+ Validar post simulate com campo operationUser com valor maior que 8 caracteres {
+            "code": "1002",
+            "message": "operationUser: the length must be no more than 8.",
+            "status": 400
+        }
+ Validar post simulate com campo product com valor em branco, inválido ou vazio {
+            "errors": {
+                "code": "1002",
+                "message": "product: must be a valid value.",
+                "status": 400
+            }
+        }
+ Validar post simulate sem campo anticipationGravame {
+            "code": "1016",
+            "message": "This partner is inactive.",
+            "status": 422
+        }
+ Validar post simulate sem campo companyNumber {
+            "companyNumber": [
+                "Missing data for required field."
+            ]
+        }
+ Validar post simulate sem campo product {
+            "code": "1002",
+            "message": "product: attribute is required.",
+            "status": 400
+        }
+ Validar post simulate com sucesso {
+            "object": {
+                "periodRate": 13.913596,
+                "netValue": 50341.03,
+                "totalRotatingAmount": 0.0,
+                "parcelAmount": 58477.33,
+                "effectiveRate": 5.179788,
+                "financialCost": 0.981939,
+                "monthRate": 4.69,
+                "initialDueDate": "22/11/2023",
+                "finalDueDate": "22/11/2023",
+                "averageTerm": 89.0,
+                "product": "CESSAO",
+                "domiciles": [
+                    {
+                        "companyNumber": 90078837,
+                        "creditAgency": 1500,
+                        "gravameIndicator": false,
+                        "brandNumber": 1,
+                        "codeDomicilePayment": "5544191",
+                        "creditBank": 341,
+                        "accountType": "CC",
+                        "accountNumber": "00000000000000738636"
+                    }
+                ],
+                "spread": 4.157,
+                "brands": [
+                    1
+                ],
+                "grossValue": 58477.33
+            },
+            "code": "0000",
+            "message": "create"
+        }
+ Validar post simulate com valor acima do estipulado para o canal {
+            "code": "1016",
+            "message": "This partner is inactive.",
+            "status": 422
+        }
+ Validar post simulate com campo workingDaysToPayment com valor em branco, inválido ou vazio {
+            "workingDaysToPayment": [
+                "Not a valid integer."
+            ]
+        }
+ Validar post simulate com campo workingDaysToPayment com valor numerico negativo {
+            "code": "1002",
+            "message": "workingDaysToPayment: must be no less than 0.",
+            "status": 400
+        }
+
 
 
