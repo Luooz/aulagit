@@ -1,70 +1,3 @@
-# 📚 Índice 
-
-1. [get-balance](#get-balance)
-2. [post-hire](#post-hire)
-3. [post-simulate](#post-simulate)
-
----
-
-## `get-balance`
-| Cenários | Request URI/urlPathPattern | Response |
-|---|---|---|
-| Validar header 'Autorization' com valor inválido ou vazio | `https://rl7-sandbox-api.useredecloud.com.br/anticipation/zenite/balance/([1-9][0-9]{9,})` | `{ "code": "0000", "message": "Unauthorized" }`
-| Parametro 'companyNumber' com valor inexistente | `https://rl7-sandbox-api.useredecloud.com.br/anticipation/zenite/balance/0.*` | `{ "pathParameters": { "companyNumber": [ "Must be greater than or equal to 1 and less than or equal to 999999999." ] } }`
-| Parametro 'companyNumber' com valor alfabetico | `https://rl7-sandbox-api.useredecloud.com.br/anticipation/zenite/balance/([A-Z]\|[a-z])*` | `{ "pathParameters": { "companyNumber": [ "Must be greater than or equal to 1 and less than or equal to 999999999." ] } } `
-| Validar get sem header 'Autorization' | `https://rl7-sandbox-api.useredecloud.com.br/anticipation/zenite/balance/([1-9]\|[1-9][0-9]{0,7})` | `{ "code": "0000", "message": "Unauthorized" }`
-| Retorno sucesso | `https://rl7-sandbox-api.useredecloud.com.br/anticipation/zenite/balance/([1-9]\|[1-9][0-9]{0,7})` | `{ "code": "0000", "message": "consult", "object": { "totalNegotiatedGravame": 0.0, "totalRevolving": 0.0, "brands": [ { "balance": 647777.04, "code": 1 } ], "totalFree": 647777.04, "totalBlockedAnticipation": 0.0, "totalCreditAssignment": 0.0, "totalAmountInstallments": 647777.04, "grossTotal": 647777.04 } }`
-
-## `post-hire`
-
-| Cenários | Request URI/urlPathPattern | Response |
-|---|---|---|
-| Validar post hire com campo anticipationAmount com valor zerado e campo product com valor 'V' | /anticipation/zenite/hire | `{"errors": {"code": "1002", "message": "product: must be a valid value.", "status": 400}}` |
-| Validar post hire com campo anticipationAmount com valor em branco, inválido ou vazio | /anticipation/zenite/hire | `{"anticipationAmount": ["Not a valid number."]}` |
-| Validar post hire com campo anticipationGravame com valor em branco, inválido ou vazio | /anticipation/zenite/hire | `{"anticipationGravame": ["Not a valid boolean."]}` |
-| Validar post hire com campo channel em branco com falha | /anticipation/zenite/hire | `{"channel": ["Not a valid integer."]}` |
-| Validar post hire com campo channel com valor inválido | /anticipation/zenite/hire | `{"channel": ["Not a valid integer."]}` |
-| Validar post hire com campo companyNumber com valor numérico negativo | /anticipation/zenite/hire | `{"companyNumber": ["Must be greater than or equal to 1 and less than or equal to 999999999."]}` |
-| Validar post hire com campo companyNumber com valor em branco, inválido ou vazio | /anticipation/zenite/hire | `{"companyNumber": ["Not a valid integer."]}` |
-| Validar post hire com header 'Authorization' com token inválido | /anticipation/zenite/hire | `{"message": "Unauthorized"}` |
-| Validar post hire com header 'Authorization' com valor inválido ou em branco | /anticipation/zenite/hire | `{"message": "Unauthorized"}` |
-| Validar post hire com campo operationUser com valor em branco | /anticipation/zenite/hire | `{"operationUser": ["Not a valid integer."]}` |
-| Validar post hire com campo operationUser com valor inválido | /anticipation/zenite/hire | `{"errors": {"code": "1002", "message": "operationUser: the length must be no more than 8.", "status": 400}}` |
-| Validar post hire com campo product com valor em branco, inválido ou vazio | /anticipation/zenite/hire | `{"errors": {"code": "1002", "message": "product: must be a valid value.", "status": 400}}` |
-| Validar post hire sem campo anticipationGravame | /anticipation/zenite/hire | `{"errors": {"code": "1016", "message": "This partner is inactive.", "status": 422}}` |
-| Validar post hire sem campo companyNumber | /anticipation/zenite/hire | `{"companyNumber": ["Missing data for required field."]}` |
-| Validar post hire sem campo product | /anticipation/zenite/hire | `{"errors": {"code": "1002", "message": "product: attribute is required.", "status": 400}}` |
-| Validar post hire sem header 'Authorization' | /anticipation/zenite/hire | `{"message": "Unauthorized"}` |
-| Validar post hire com sucesso (validar se seria Kosmos) | /anticipation/zenite/hire | `{"object": {"periodRate": 9.223599, "netValue": 119014.56, "totalRotatingAmount": 0.0, "parcelAmount": 131107.38, "effectiveRate": 5.043661, "financialCost": 1.036515, "monthRate": 4.69, "initialDueDate": "23/10/2023", "finalDueDate": "23/10/2023", "averageTerm": 59.0, "product": "CESSAO", "domiciles": [{"companyNumber": 90078837, "creditAgency": 1500, "gravameIndicator": false, "brandNumber": 1, "codeDomicilePayment": "5544191", "creditBank": 341, "accountType": "CC", "accountNumber": "00000000000000738636"}], "operationNumber": 45756, "spread": 3.966, "brands": [1], "grossValue": 131107.38}, "code": "0000", "message": "create"}` |
-| Validar post hire com valor acima do estipulado para o canal | /anticipation/zenite/hire | `{"errors": {"code": "1016", "message": "This partner is inactive.", "status": 422}}` |
-| Validar post hire com campo workingDaysToPayment com valor numérico negativo | /anticipation/zenite/hire | `{"errors": {"code": "1002", "message": "workingDaysToPayment: must be no less than 0.", "status": 400}}` |
-| Validar post hire com campo workingDaysToPayment com valor em branco, inválido ou vazio | /anticipation/zenite/hire | `{"workingDaysToPayment": ["Not a valid integer."]}` |
-
-## `post-simulate`
-
-| Cenários | Request URI/urlPathPattern | Response |
-|---|---|---|
-| Validar post simulate com amount fora do range mínimo de 100 | /anticipation/zenite/simulate | `{"code": "1016", "message": "This partner is inactive.", "status": 422}` |
-| Validar post simulate com campo anticipationAmount com valor em branco, inválido ou vazio | /anticipation/zenite/simulate | `{"anticipationAmount": ["Not a valid number."]}` |
-| Validar post simulate com campo anticipationAmount com valor zerado e campo product com valor inválido 'G' | /anticipation/zenite/simulate | `{"code": "0000", "message": "create", "object": {"code": "1002", "message": "product: must be a valid value.", "status": 400}}` |
-| Validar post simulate com campo anticipationGravame com valor em branco, inválido ou vazio | /anticipation/zenite/simulate | `{"anticipationGravame": ["Not a valid boolean."]}` |
-| Validar channel null | /anticipation/zenite/simulate | `{"channel": ["Not a valid integer."]}` |
-| Validar campo channel inválido | /anticipation/zenite/simulate | `{"channel": ["Not a valid integer."]}` |
-| Validar post simulate com campo companyNumber com valor em branco, inválido ou vazio | /anticipation/zenite/simulate | `{"companyNumber": ["Not a valid integer."]}` |
-| Validar post simulate com campo companyNumber com valor numérico negativo | /anticipation/zenite/simulate | `{"companyNumber": ["Must be greater than or equal to 1 and less than or equal to 999999999."]}` |
-| Validar post simulate com campo operationUser com valor em branco e inválido | /anticipation/zenite/simulate | `{"operationUser": ["Not a valid integer."]}` |
-| Validar post simulate com campo operationUser com valor maior que 8 caracteres | /anticipation/zenite/simulate | `{"code": "1002", "message": "operationUser: the length must be no more than 8.", "status": 400}` |
-| Validar post simulate com campo product com valor em branco, inválido ou vazio | /anticipation/zenite/simulate | `{"errors": {"code": "1002", "message": "product: must be a valid value.", "status": 400}}` |
-| Validar post simulate sem campo anticipationGravame | /anticipation/zenite/simulate | `{"code": "1016", "message": "This partner is inactive.", "status": 422}` |
-| Validar post simulate sem campo companyNumber | /anticipation/zenite/simulate | `{"companyNumber": ["Missing data for required field."]}` |
-| Validar post simulate sem campo product | /anticipation/zenite/simulate | `{"code": "1002", "message": "product: attribute is required.", "status": 400}` |
-| Validar post simulate com sucesso | /anticipation/zenite/simulate | `{"object": {"periodRate": 13.913596, "netValue": 50341.03, "totalRotatingAmount": 0.0, "parcelAmount": 58477.33, "effectiveRate": 5.179788, "financialCost": 0.981939, "monthRate": 4.69, "initialDueDate": "22/11/2023", "finalDueDate": "22/11/2023", "averageTerm": 89.0, "product": "CESSAO", "domiciles": [{"companyNumber": 90078837, "creditAgency": 1500, "gravameIndicator": false, "brandNumber": 1, "codeDomicilePayment": "5544191", "creditBank": 341, "accountType": "CC", "accountNumber": "00000000000000738636"}], "spread": 4.157, "brands": [1], "grossValue": 58477.33}, "code": "0000", "message": "create"}` |
-| Validar post simulate com valor acima do estipulado para o canal | /anticipation/zenite/simulate | `{"code": "1016", "message": "This partner is inactive.", "status": 422}` |
-| Validar post simulate com campo workingDaysToPayment com valor em branco, inválido ou vazio | /anticipation/zenite/simulate | `{"workingDaysToPayment": ["Not a valid integer."]}` |
-| Validar post simulate com campo workingDaysToPayment com valor numérico negativo | /anticipation/zenite/simulate | `{"code": "1002", "message": "workingDaysToPayment: must be no less than 0.", "status": 400}` |
-
-XXXXXXXXXXXXXXXXX
-
 # 📘 Documentação das Rotas do Sandbox
 
 Bem-vindo à documentação das rotas do ambiente Sandbox! Aqui, você encontrará informações detalhadas sobre as várias rotas disponíveis.
@@ -84,18 +17,18 @@ Bem-vindo à documentação das rotas do ambiente Sandbox! Aqui, você encontrar
 ### 2. RavAuto Avulso
 - Contratação
     - 2.1. [Contratação de Antecipação Zenite](#contratação-de-antecipação-zenite)
-    - 2.2. [Contratação de Antecipação Zenite Kosmo](#contratação-de-antecipação-zenite-kosmo)
+    - 2.2. [Contratação de Antecipação Zenite Docmile](#contratação-de-antecipação-zenite-domicile)
 
 - Simulação
     - 2.3. [Simulação de Antecipação Zenite](#simulação-de-antecipação-zenite)
-    - 2.4. [Simulação de Antecipação Zenite Kosmo](#simulação-de-antecipação-zenite-kosmo)
+    - 2.4. [Simulação de Antecipação Zenite Domicile](#simulação-de-antecipação-zenite-domicile)
 
-### 3. Balancer
+### 3. Consulta de Saldo (Balance)
 - [Consulta de Saldo Antecipação Zenite](#consulta-de-saldo-antecipação-zenite)
    - 3.2. Free
    - 3.3. Compan
 
-### 4. Consult
+### 4. Consulta de Operações
 - Operations
    - 4.1. [Consulta de Operação Zenite](#consulta-de-operação-zenite)
 - Last-operations
@@ -110,16 +43,16 @@ Bem-vindo à documentação das rotas do ambiente Sandbox! Aqui, você encontrar
 | Rotas | Nomes sugeridos para Pastas | Método |
 |---|---|---|
 | Cancelamento de ravAuto | --- | --- |
-| Consulta de saldo antecipação Zenite | get-balance-kosmos | `GET` |
+| Consulta de saldo antecipação Zenite | get-balance | `GET` |
 | Consulta de última operação Zenite | get-consult-operations-last-operation | `GET` |
 | Consulta de status de operações Zenite | get-consult-operations-status | `GET` |
 | Consulta de operação Zenite | get-consult-operations | `GET` |
 | Consulta de contrato ravAuto | get-consult-contract-ravAuto | `GET` |
-| Contratacao de antecipação Zenite | post-hire-domicilio | `POST` |
+| Contratacao de antecipação Zenite | post-hire | `POST` |
 | Contratação de ravAuto | post-hire-ravAuto | `POST` |
-| Contratação a antecipação Zenite Kosmo | post-hire-kosmos | `POST` |
-| Simulação de antecipação Zenite | post-simulate-domicilio | `POST` |
-| Simulação de antecipação Zenite Kosmo | post-simulate-kosmos | `POST` |
+| Contratação a antecipação Zenite Domicile | post-hire-domicile | `POST` |
+| Simulação de antecipação Zenite | post-simulate | `POST` |
+| Simulação de antecipação Zenite Domicile | post-simulate-domicile | `POST` |
 
 ## Rotas
 
@@ -144,16 +77,13 @@ Request URI: `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balanc
 ### Cenários de Teste
 Aqui estão os cenários que você pode usar para testar esta rota no Insomnia:
 
-| CT-NCA-XXX | Cenários | Request URI/urlPathPattern | Response |
-|---|---|---|---|
-| CT-NCA-109 | Validar get balance com sucesso | `/anticipation/zenite/balance/([1-9]\|[1-9][0-9]{0,7})` | `{"pathParameters": {"companyNumber": ["Must be greater than or equal to 1 and less than or equal to 999999999."]}}` |
-| CT-NCA-110 | Validar get balance kosmos com header "Autorization" com valor inválido | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/90085329` | ` {"message": "Unauthorized"} ` |
-| CT-NCA-111 | Validar get balance kosmos com header "Autorization" com valor vazio | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/90085329` | ` {"message": "Unauthorized"} ` |
-| CT-NCA-112 | Validar get balance kosmos com header "Autorization" com valor em branco | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/90085329` | ` {"message": "Unauthorized"} ` |
-| CT-NCA-113 | Validar get balance kosmos com header "Autorization" com token inválido | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/90085329` | ` {"message": "Unauthorized"} ` |
-| CT-NCA-114 | Validar get balance kosmos sem header "Autorization" | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/90085329` | ` {"message": "Unauthorized"} ` |
-| CT-NCA-115 | Validar get balance kosmos com parametro de rota "companyNumber" com valor alfabetico | `https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/alfabetico` | `{"pathParameters": {"companyNumber": ["Not a valid integer."]}}` |
-| CT-NCA-115 | Validar get balance kosmos com parametro de rota "companyNumber" com valor inexistente | ` https://rl7-hom-api.useredecloud.com.br/anticipation/zenite/balance/0000 ` | `{"pathParameters": {"companyNumber": ["Must be greater than or equal to 1 and less than or equal to 999999999."]}}`
+| Cenários | Request URI/urlPathPattern | Response |
+|---|---|---|
+| Validar header 'Autorization' com valor inválido ou vazio | `https://rl7-sandbox-api.useredecloud.com.br/anticipation/zenite/balance/([1-9][0-9]{9,})` | `{ "code": "0000", "message": "Unauthorized" }`
+| Parametro 'companyNumber' com valor inexistente | `https://rl7-sandbox-api.useredecloud.com.br/anticipation/zenite/balance/0.*` | `{ "pathParameters": { "companyNumber": [ "Must be greater than or equal to 1 and less than or equal to 999999999." ] } }`
+| Parametro 'companyNumber' com valor alfabetico | `https://rl7-sandbox-api.useredecloud.com.br/anticipation/zenite/balance/([A-Z]\|[a-z])*` | `{ "pathParameters": { "companyNumber": [ "Must be greater than or equal to 1 and less than or equal to 999999999." ] } } `
+| Validar get sem header 'Autorization' | `https://rl7-sandbox-api.useredecloud.com.br/anticipation/zenite/balance/([1-9]\|[1-9][0-9]{0,7})` | `{ "code": "0000", "message": "Unauthorized" }`
+| Retorno sucesso | `https://rl7-sandbox-api.useredecloud.com.br/anticipation/zenite/balance/([1-9]\|[1-9][0-9]{0,7})` | `{ "code": "0000", "message": "consult", "object": { "totalNegotiatedGravame": 0.0, "totalRevolving": 0.0, "brands": [ { "balance": 647777.04, "code": 1 } ], "totalFree": 647777.04, "totalBlockedAnticipation": 0.0, "totalCreditAssignment": 0.0, "totalAmountInstallments": 647777.04, "grossTotal": 647777.04 } }`
 
 #### 🚀 Testando no Insomnia
 
@@ -282,7 +212,7 @@ Para testar esta rota, siga os passos em [🚀 Testando no Insomnia](#-testando-
 ---
 
 ## Contratação de antecipação Zenite
-`post-hire-domicilio`
+`post-hire`
 - **Endpoint:** /anticipation/zenite/hire/domicile
 
 - **Método:** `POST`
@@ -398,46 +328,36 @@ Para testar esta rota, siga os passos em [🚀 Testando no Insomnia](#-testando-
 
 ---
 
-## Contratação de antecipação Zenite Kosmo
-`post-hire-kosmos`
+## Contratação de antecipação Zenite Domicile
+`post-hire-domicile`
 - **Endpoint:** /anticipation/zenite/hire
 
 - **Método:** `POST`
 
 ### Cenários de Teste
 
-| CT-NCA-XXX | Cenários | Request | Response |
-| --- | --- | --- | --- |
-| CT-NCA-186 | Validar post hire Kosmo com header "Authorization" com valor inválido | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "message": "Unauthorized" }` |
-| CT-NCA-187 | Validar post hire Kosmo com header "Authorization" com valor em branco | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "message": "Unauthorized" }` |
-| CT-NCA-188 | Validar post hire Kosmo com header "Authorization" com token inválido | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "message": "Unauthorized" }` |
-| CT-NCA-189 | Validar post hire Kosmo sem header "Authorization" | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "message": "Unauthorized" }` |
-| CT-NCA-190 | Validar post hire Kosmo com valor acima do estipulado para o canal | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 999999, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "errors": { "code": "1016", "message": "This partner is inactive.", "status": 422 } }` |
-| CT-NCA-191 | Validar post hire Kosmo com campo companyNumber com valor inválido zenite | `{ "companyNumber": "ABC", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "companyNumber": [ "Not a valid integer." ] }` |
-| CT-NCA-192 | Validar post hire Kosmo com campo companyNumber com valor numérico negativo | `{ "companyNumber": "-12", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "companyNumber": [ "Must be greater than or equal to 1 and less than or equal to 999999999." ] }` |
-| CT-NCA-193 | Validar post hire Kosmo com campo companyNumber com valor vazio | `{ "companyNumber": "", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "companyNumber": [ "Not a valid integer." ] }` |
-| CT-NCA-194 | Validar post hire Kosmo com campo companyNumber com valor em branco | `{ "companyNumber": " ", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "companyNumber": [ "Not a valid integer." ] }` |
-| CT-NCA-195 | Validar post hire Kosmo sem campo companyNumber | `{ "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "companyNumber": [ "Missing data for required field." ] }` |
-| CT-NCA-196 | Validar post hire Kosmo com campo workingDaysToPayment com valor inválido | `{ "companyNumber": "90078837", "workingDaysToPayment": ">.,);", "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "workingDaysToPayment": [ "Not a valid integer." ] }` |
-| CT-NCA-197 | Validar post hire Kosmo com campo workingDaysToPayment com valor numérico negativo | `{ "companyNumber": "90078837", "workingDaysToPayment": "-12", "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "errors": { "code": "1002", "message": "workingDaysToPayment: must be no less than 0.", "status": 400 } }` |
-| CT-NCA-198 | Validar post hire Kosmo com campo workingDaysToPayment com valor vazio | `{ "companyNumber": "90078837", "workingDaysToPayment": "", "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "workingDaysToPayment": [ "Not a valid integer." ] }` |
-| CT-NCA-199 | Validar post hire Kosmo com campo workingDaysToPayment com valor em branco | `{ "companyNumber": "90078837", "workingDaysToPayment": " ", "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "workingDaysToPayment": [ "Not a valid integer." ] }` |
-| CT-NCA-201 | Validar post hire Kosmo com campo anticipationAmount com valor inválido | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": "!.*!+", "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "anticipationAmount": [ "Not a valid number." ] }` |
-| CT-NCA-202 | Validar post hire Kosmo com campo anticipationAmount com valor zerado e campo product com valor "V" | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": "0", "channel": 6, "product": "V", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "errors": { "code": "1002", "message": "product: must be a valid value.", "status": 400 } }` |
-| CT-NCA-204 | Validar post hire Kosmo com campo anticipationAmount com valor vazio | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": "", "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "anticipationAmount": [ "Not a valid number." ] }` |
-| CT-NCA-205 | Validar post hire Kosmo com campo anticipationAmount com valor em branco | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": " ", "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "anticipationAmount": [ "Not a valid number." ] }` |
-| CT-NCA-207 | Validar post hire Kosmo com campo product com valor inválido | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": ">,^*!", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "errors": { "code": "1002", "message": "product: must be a valid value.", "status": 400 } }` |
-| CT-NCA-208 | Validar post hire Kosmo com campo product com valor vazio | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "errors": { "code": "1002", "message": "product: attribute is required.", "status": 400 } }` |
-| CT-NCA-209 | Validar post hire Kosmo com campo product com valor em branco | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": " ", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "errors": { "code": "1002", "message": "product: must be a valid value.", "status": 400 } }` |
-| CT-NCA-210   | Validar post hire Kosmo sem campo product | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "errors": { "code": "1002", "message": "product: attribute is required.", "status": 400 } }` |
-| CT-NCA-211   | Validar post hire Kosmo com campo anticipationGravame com valor inválido | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": ";%^:}", "codeProduct": 301, "partnerNumber": 2 }` | `{ "anticipationGravame": [ "Not a valid boolean." ] }` |
-| CT-NCA-212   | Validar post hire Kosmo com campo anticipationGravame com valor vazio | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": "", "codeProduct": 301, "partnerNumber": 2 }` | `{ "anticipationGravame": [ "Not a valid boolean." ] }` |
-| CT-NCA-213   | Validar post hire Kosmo com campo anticipationGravame com valor em branco | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": " ", "codeProduct": 301, "partnerNumber": 2 }` | `{ "anticipationGravame": [ "Not a valid boolean." ] }` |
-| CT-NCA-214   | Validar post hire Kosmo sem campo anticipationGravame | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "codeProduct": 301, "partnerNumber": 2 }` | `{ "errors": { "code": "1016", "message": "This partner is inactive.", "status": 422 } }` |
-| CT-NCA-215   | Validar post hire Kosmo com campo operationUser com valor inválido | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "1234567890", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "errors": { "code": "1002", "message": "operationUser: the length must be no more than 8.", "status": 400 } }` |
-| CT-NCA-217   | Validar post hire Kosmo com campo operationUser com valor em branco | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": " ", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "operationUser": [ "Not a valid integer." ] }` |
-| CT-NCA-218   | Validar post hire Kosmo com campo channel com valor inválido | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": "ABC", "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2 }` | `{ "channel": [ "Not a valid integer." ] }` |
-| CT-NCA-220   | Validar post hire Kosmo com campo channel em branco com falha | `{ "companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": "NULL", "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 1940 }` | `{ "channel": [ "Not a valid integer." ] }` |
+| Cenários | Request URI/urlPathPattern | Response |
+|---|---|---|
+| Validar post hire com campo anticipationAmount com valor zerado e campo product com valor 'V' | /anticipation/zenite/hire | `{"errors": {"code": "1002", "message": "product: must be a valid value.", "status": 400}}` |
+| Validar post hire com campo anticipationAmount com valor em branco, inválido ou vazio | /anticipation/zenite/hire | `{"anticipationAmount": ["Not a valid number."]}` |
+| Validar post hire com campo anticipationGravame com valor em branco, inválido ou vazio | /anticipation/zenite/hire | `{"anticipationGravame": ["Not a valid boolean."]}` |
+| Validar post hire com campo channel em branco com falha | /anticipation/zenite/hire | `{"channel": ["Not a valid integer."]}` |
+| Validar post hire com campo channel com valor inválido | /anticipation/zenite/hire | `{"channel": ["Not a valid integer."]}` |
+| Validar post hire com campo companyNumber com valor numérico negativo | /anticipation/zenite/hire | `{"companyNumber": ["Must be greater than or equal to 1 and less than or equal to 999999999."]}` |
+| Validar post hire com campo companyNumber com valor em branco, inválido ou vazio | /anticipation/zenite/hire | `{"companyNumber": ["Not a valid integer."]}` |
+| Validar post hire com header 'Authorization' com token inválido | /anticipation/zenite/hire | `{"message": "Unauthorized"}` |
+| Validar post hire com header 'Authorization' com valor inválido ou em branco | /anticipation/zenite/hire | `{"message": "Unauthorized"}` |
+| Validar post hire com campo operationUser com valor em branco | /anticipation/zenite/hire | `{"operationUser": ["Not a valid integer."]}` |
+| Validar post hire com campo operationUser com valor inválido | /anticipation/zenite/hire | `{"errors": {"code": "1002", "message": "operationUser: the length must be no more than 8.", "status": 400}}` |
+| Validar post hire com campo product com valor em branco, inválido ou vazio | /anticipation/zenite/hire | `{"errors": {"code": "1002", "message": "product: must be a valid value.", "status": 400}}` |
+| Validar post hire sem campo anticipationGravame | /anticipation/zenite/hire | `{"errors": {"code": "1016", "message": "This partner is inactive.", "status": 422}}` |
+| Validar post hire sem campo companyNumber | /anticipation/zenite/hire | `{"companyNumber": ["Missing data for required field."]}` |
+| Validar post hire sem campo product | /anticipation/zenite/hire | `{"errors": {"code": "1002", "message": "product: attribute is required.", "status": 400}}` |
+| Validar post hire sem header 'Authorization' | /anticipation/zenite/hire | `{"message": "Unauthorized"}` |
+| Validar post hire com sucesso (validar se seria Kosmos) | /anticipation/zenite/hire | `{"object": {"periodRate": 9.223599, "netValue": 119014.56, "totalRotatingAmount": 0.0, "parcelAmount": 131107.38, "effectiveRate": 5.043661, "financialCost": 1.036515, "monthRate": 4.69, "initialDueDate": "23/10/2023", "finalDueDate": "23/10/2023", "averageTerm": 59.0, "product": "CESSAO", "domiciles": [{"companyNumber": 90078837, "creditAgency": 1500, "gravameIndicator": false, "brandNumber": 1, "codeDomicilePayment": "5544191", "creditBank": 341, "accountType": "CC", "accountNumber": "00000000000000738636"}], "operationNumber": 45756, "spread": 3.966, "brands": [1], "grossValue": 131107.38}, "code": "0000", "message": "create"}` |
+| Validar post hire com valor acima do estipulado para o canal | /anticipation/zenite/hire | `{"errors": {"code": "1016", "message": "This partner is inactive.", "status": 422}}` |
+| Validar post hire com campo workingDaysToPayment com valor numérico negativo | /anticipation/zenite/hire | `{"errors": {"code": "1002", "message": "workingDaysToPayment: must be no less than 0.", "status": 400}}` |
+| Validar post hire com campo workingDaysToPayment com valor em branco, inválido ou vazio | /anticipation/zenite/hire | `{"workingDaysToPayment": ["Not a valid integer."]}` |
 
 
 #### Como Testar
@@ -446,7 +366,7 @@ Para testar esta rota, siga os passos em [🚀 Testando no Insomnia](#-testando-
 ---
 
 ## Simulação de antecipação Zenite
-`post-simulate-domicilio`
+`post-simulate`
 - **Endpoint:** /anticipation/zenite/simulate/domicile
 
 - **Método:** `POST`
@@ -489,43 +409,33 @@ Para testar esta rota, siga os passos em [🚀 Testando no Insomnia](#-testando-
 
 ---
 
-## Simulação de antecipação Zenite Kosmo
-`post-simulate-kosmos`
+## Simulação de antecipação Zenite Domicile
+`post-simulate-domicile`
 - **Endpoint:** /anticipation/zenite/simulate
 
 - **Método:** `POST`
 
 ### Cenários de Teste
-| CT-NCA-XXX | Cenários | Request URI/urlPathPattern | Response |
-|---|---|---|---|
-| CT-NCA-150 | Validar post simulate Kosmo com valor acima do estipulado para o canal | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 999999999, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"errors": {"code": "1016", "message": "This partner is inactive.", "status": 422}}` |
-| CT-NCA-151 | Validar post simulate Kosmo com campo companyNumber com valor inválido zenite | `{"companyNumber": "ABC", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"companyNumber": ["Not a valid integer."]}` |
-| CT-NCA-152 | Validar post simulate Kosmo com campo companyNumber com valor numérico negativo | `{"companyNumber": "-12", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"companyNumber": ["Must be greater than or equal to 1 and less than or equal to 999999999."]}` |
-| CT-NCA-153 | Validar post simulate Kosmo com campo companyNumber com valor vazio | `{"companyNumber": "", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"companyNumber": ["Not a valid integer."]}` |
-| CT-NCA-154 | Validar post simulate Kosmo com campo companyNumber com valor em branco | `{"companyNumber": "    ", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"companyNumber": ["Not a valid integer."]}` |
-| CT-NCA-155 | Validar post simulate Kosmo sem campo companyNumber | `{"workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"companyNumber": ["Missing data for required field."]}` |
-| CT-NCA-156 | Validar post simulate Kosmo com campo workingDaysToPayment com valor inválido | `{"companyNumber": "90078837", "workingDaysToPayment": "@", "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"workingDaysToPayment": ["Not a valid integer."]}` |
-| CT-NCA-157 | Validar post simulate Kosmo com campo workingDaysToPayment com valor numérico negativo | `{"companyNumber": "90078837", "workingDaysToPayment": "-12", "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"errors": {"code": "1002", "message": "workingDaysToPayment: must be no less than 0.", "status": 400}}` |
-| CT-NCA-158 | Validar post simulate Kosmo com campo workingDaysToPayment com valor vazio | `{"companyNumber": "90078837", "workingDaysToPayment": "", "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"workingDaysToPayment": ["Not a valid integer."]}` |
-| CT-NCA-159 | Validar post simulate Kosmo com campo workingDaysToPayment com valor em branco | `{"companyNumber": "90078837", "workingDaysToPayment": "   ", "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"workingDaysToPayment": ["Not a valid integer."]}` |
-| CT-NCA-160 | Validar post simulate Kosmo com campo product com valor inválido | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "#^!);", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"errors": {"code": "1002", "message": "product: must be a valid value.", "status": 400}}` |
-| CT-NCA-161 | Validar post simulate Kosmo com campo product com valor vazio | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"errors": {"code": "1002", "message": "product: attribute is required.", "status": 400}}` |
-| CT-NCA-162 | Validar post simulate Kosmo com campo product com valor em branco | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "   ", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"errors": {"code": "1002", "message": "product: must be a valid value.", "status": 400}}` |
-| CT-NCA-163 | Validar post simulate Kosmo sem campo product | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"errors": {"code": "1002", "message": "product: attribute is required.", "status": 400}}` |
-| CT-NCA-164 | Validar post simulate Kosmo com campo anticipationAmount com valor inválido | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": ",^;]+", "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"anticipationAmount": ["Not a valid number."]}` |
-| CT-NCA-165 | Validar post simulate Kosmo com campo anticipationAmount com valor zerado e campo product com valor inválido "G" | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": "0", "channel": 6, "product": "G", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"errors": {"code": "1002", "message": "product: must be a valid value.", "status": 400}}` |
-| CT-NCA-169 | Validar post simulate Kosmo com campo anticipationAmount com valor vazio | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": "", "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"anticipationAmount": ["Not a valid number."]}` |
-| CT-NCA-170 | Validar post simulate Kosmo com campo anticipationAmount com valor em branco | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": "   ", "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"anticipationAmount": ["Not a valid number."]}` |
-| CT-NCA-172 | Validar post simulate com amount fora do range mínimo de 100 | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": "50", "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"errors": {"code": "1016", "message": "This partner is inactive.", "status": 422}}` |
-| CT-NCA-174 | Validar post simulate Kosmo com campo anticipationGravame com valor inválido | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": "!*(]<", "codeProduct": 301, "partnerNumber": 2}` | `{"anticipationGravame": ["Not a valid boolean."]}` |
-| CT-NCA-175 | Validar post simulate Kosmo com campo anticipationGravame com valor vazio | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": "", "codeProduct": 301, "partnerNumber": 2}` | `{"anticipationGravame": ["Not a valid boolean."]}` |
-| CT-NCA-176 | Validar post simulate Kosmo com campo anticipationGravame com valor em branco | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "anticipationGravame": "   ", "codeProduct": 301, "partnerNumber": 2}` | `{"anticipationGravame": ["Not a valid boolean."]}` |
-| CT-NCA-177 | Validar post simulate Kosmo sem campo anticipationGravame | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "739347", "codeProduct": 301, "partnerNumber": 2}` | `{"errors": {"code": "1016", "message": "This partner is inactive.", "status": 422}}` |
-| CT-NCA-178 | Validar post simulate Kosmo com campo operationUser com valor inválido | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "+;|%>", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"operationUser": ["Not a valid integer."]}` |
-| CT-NCA-180 | Validar post simulate Kosmo com campo operationUser com valor em branco | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "   ", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"operationUser": ["Not a valid integer."]}` |
-| CT-NCA-181 | Validar post simulate Kosmo com campo operationUser com valor maior que 8 caracteres | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": "123456789", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"errors": {"code": "1002", "message": "operationUser: the length must be no more than 8.", "status": 400}}` |
-| CT-NCA-182 | Validar post hire Kosmo com campo channel com valor inválido | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": "ABC", "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"channel": ["Not a valid integer."]}` |
-| CT-NCA-184 | Validar post hire Kosmo com campo channel em branco com falha | `{"companyNumber": "90078837", "workingDaysToPayment": 1, "anticipationAmount": 100, "channel": "NULL", "product": "A", "operationUser": "739347", "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"channel": ["Not a valid integer."]}` |
+| Cenários | Request URI/urlPathPattern | Response |
+|---|---|---|
+| Validar post simulate com amount fora do range mínimo de 100 | /anticipation/zenite/simulate | `{"code": "1016", "message": "This partner is inactive.", "status": 422}` |
+| Validar post simulate com campo anticipationAmount com valor em branco, inválido ou vazio | /anticipation/zenite/simulate | `{"anticipationAmount": ["Not a valid number."]}` |
+| Validar post simulate com campo anticipationAmount com valor zerado e campo product com valor inválido 'G' | /anticipation/zenite/simulate | `{"code": "0000", "message": "create", "object": {"code": "1002", "message": "product: must be a valid value.", "status": 400}}` |
+| Validar post simulate com campo anticipationGravame com valor em branco, inválido ou vazio | /anticipation/zenite/simulate | `{"anticipationGravame": ["Not a valid boolean."]}` |
+| Validar channel null | /anticipation/zenite/simulate | `{"channel": ["Not a valid integer."]}` |
+| Validar campo channel inválido | /anticipation/zenite/simulate | `{"channel": ["Not a valid integer."]}` |
+| Validar post simulate com campo companyNumber com valor em branco, inválido ou vazio | /anticipation/zenite/simulate | `{"companyNumber": ["Not a valid integer."]}` |
+| Validar post simulate com campo companyNumber com valor numérico negativo | /anticipation/zenite/simulate | `{"companyNumber": ["Must be greater than or equal to 1 and less than or equal to 999999999."]}` |
+| Validar post simulate com campo operationUser com valor em branco e inválido | /anticipation/zenite/simulate | `{"operationUser": ["Not a valid integer."]}` |
+| Validar post simulate com campo operationUser com valor maior que 8 caracteres | /anticipation/zenite/simulate | `{"code": "1002", "message": "operationUser: the length must be no more than 8.", "status": 400}` |
+| Validar post simulate com campo product com valor em branco, inválido ou vazio | /anticipation/zenite/simulate | `{"errors": {"code": "1002", "message": "product: must be a valid value.", "status": 400}}` |
+| Validar post simulate sem campo anticipationGravame | /anticipation/zenite/simulate | `{"code": "1016", "message": "This partner is inactive.", "status": 422}` |
+| Validar post simulate sem campo companyNumber | /anticipation/zenite/simulate | `{"companyNumber": ["Missing data for required field."]}` |
+| Validar post simulate sem campo product | /anticipation/zenite/simulate | `{"code": "1002", "message": "product: attribute is required.", "status": 400}` |
+| Validar post simulate com sucesso | /anticipation/zenite/simulate | `{"object": {"periodRate": 13.913596, "netValue": 50341.03, "totalRotatingAmount": 0.0, "parcelAmount": 58477.33, "effectiveRate": 5.179788, "financialCost": 0.981939, "monthRate": 4.69, "initialDueDate": "22/11/2023", "finalDueDate": "22/11/2023", "averageTerm": 89.0, "product": "CESSAO", "domiciles": [{"companyNumber": 90078837, "creditAgency": 1500, "gravameIndicator": false, "brandNumber": 1, "codeDomicilePayment": "5544191", "creditBank": 341, "accountType": "CC", "accountNumber": "00000000000000738636"}], "spread": 4.157, "brands": [1], "grossValue": 58477.33}, "code": "0000", "message": "create"}` |
+| Validar post simulate com valor acima do estipulado para o canal | /anticipation/zenite/simulate | `{"code": "1016", "message": "This partner is inactive.", "status": 422}` |
+| Validar post simulate com campo workingDaysToPayment com valor em branco, inválido ou vazio | /anticipation/zenite/simulate | `{"workingDaysToPayment": ["Not a valid integer."]}` |
+| Validar post simulate com campo workingDaysToPayment com valor numérico negativo | /anticipation/zenite/simulate | `{"code": "1002", "message": "workingDaysToPayment: must be no less than 0.", "status": 400}` |
 
 #### Como Testar
 Para testar esta rota, siga os passos em [🚀 Testando no Insomnia](#-testando-no-insomnia).
