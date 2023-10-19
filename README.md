@@ -17,7 +17,7 @@ Bem-vindo à documentação das rotas do ambiente Sandbox! Aqui, você encontrar
 ### 2. RavAuto Avulso
 - Contratação
     - 2.1. [Contratação de Antecipação Zenite](#contratação-de-antecipação-zenite)
-    - 2.2. [Contratação de Antecipação Zenite Docmile](#contratação-de-antecipação-zenite-domicile)
+    - 2.2. [Contratação de Antecipação Zenite Docimile](#contratação-de-antecipação-zenite-domicile)
 
 - Simulação
     - 2.3. [Simulação de Antecipação Zenite](#simulação-de-antecipação-zenite)
