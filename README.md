@@ -64,7 +64,7 @@ Bem-vindo à documentação das rotas do ambiente Sandbox! Aqui, você encontrar
 ---
 
 ### Consulta de Saldo Antecipação Zenite
-`get-balance-kosmos`
+`get-balance`
 - **Endpoint:** /anticipation/zenite/balance/{companyNumber}
 - **Método:** `GET`
 
