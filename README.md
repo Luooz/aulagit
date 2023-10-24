@@ -498,3 +498,229 @@ ___
 | Validar post simulate com valor acima do estipulado para o canal | /anticipation/zenite/simulate | `{"code": "1016", "message": "This partner is inactive.", "status": 422}` |
 | Validar post simulate com campo workingDaysToPayment com valor em branco, inválido ou vazio | /anticipation/zenite/simulate | `{"workingDaysToPayment": ["Not a valid integer."]}` |
 | Validar post simulate com campo workingDaysToPayment com valor numérico negativo | /anticipation/zenite/simulate | `{"code": "1002", "message": "workingDaysToPayment: must be no less than 0.", "status": 400}` |
+
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": "0",
+                    "channel": 6,
+                    "product": "V",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": "   ",
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": "   ",
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                "equalToJson": {
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": "NULL",
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 1940
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": "ABC",
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": "-12",
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": "    ",
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                "equalToJson": {
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                "equalToJson": {
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                "equalToJson": {
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": "   ",
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                "equalToJson": {
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": "1234567890",
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "   ",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                "equalToJson": {
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                "equalToJson": {
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 15,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 999999,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": "-12",
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": "   ",
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+
