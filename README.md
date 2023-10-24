@@ -744,4 +744,201 @@ post-hire
 | Validar post hire com campo workingDaysToPayment com valor numérico negativo | `{"companyNumber": 90078837, "workingDaysToPayment": "-12", "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": 739347, "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"workingDaysToPayment": ["Must be greater than or equal to 1."]}` |
 | Validar post hire com campo workingDaysToPayment em branco, inválido ou vazio | `{"companyNumber": 90078837, "workingDaysToPayment": "   ", "anticipationAmount": 100, "channel": 6, "product": "A", "operationUser": 739347, "anticipationGravame": false, "codeProduct": 301, "partnerNumber": 2}` | `{"workingDaysToPayment": ["Not a valid integer."]}` |
 
+post-simulate
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": "50",
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": "   ",
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": "0",
+                    "channel": 6,
+                    "product": "G",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": "   ",
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": null,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "expression": "$.channel",
+                    "matches": "(|[A-Za-z. ]+)",
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": "    ",
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": "   ",
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": "123456789",
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "   ",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 100,
+                    "channel": 15,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": 1,
+                    "anticipationAmount": 999999999,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": "   ",
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
+{
+                    "companyNumber": 90078837,
+                    "workingDaysToPayment": "-12",
+                    "anticipationAmount": 100,
+                    "channel": 6,
+                    "product": "A",
+                    "operationUser": 739347,
+                    "anticipationGravame": false,
+                    "codeProduct": 301,
+                    "partnerNumber": 2
+                }
 
